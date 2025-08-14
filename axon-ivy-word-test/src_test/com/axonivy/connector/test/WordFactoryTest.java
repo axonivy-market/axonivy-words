@@ -33,59 +33,57 @@ class WordFactoryTest {
 		field.set(null, null);
 	}
 
-	/** Helper to run test code with mocks already set up */
-	private void withMockedLicense(TestLogic logic) throws Exception {
-		try (MockedStatic<ThirdPartyLicenses> mockedThirdParty = Mockito.mockStatic(ThirdPartyLicenses.class)) {
-			InputStream dummyStream = mock(InputStream.class);
-			mockedThirdParty.when(ThirdPartyLicenses::getDocumentFactoryLicense).thenReturn(dummyStream);
-
-			try (MockedConstruction<License> mockedLicenseCtor = Mockito.mockConstruction(License.class,
-					(mock, context) -> doNothing().when(mock).setLicense(any(InputStream.class)))) {
-				logic.run(dummyStream, mockedThirdParty, mockedLicenseCtor);
-			}
-		}
-	}
-
 	@Test
 	void testLoadLicenseWithoutRealAsposeFile() throws Exception {
-		withMockedLicense((stream, mockedLicenses, licenseConstruction) -> {
+		withMockedLicense((stream, mockedLicenses, mockedLicenseConstructor) -> {
 			WordFactory.loadLicense();
 			WordFactory.loadLicense();
 			mockedLicenses.verify(ThirdPartyLicenses::getDocumentFactoryLicense);
-			assertEquals(1, licenseConstruction.constructed().size());
-			verify(licenseConstruction.constructed().get(0)).setLicense(stream);
+			assertEquals(1, mockedLicenseConstructor.constructed().size());
+			verify(mockedLicenseConstructor.constructed().get(0)).setLicense(stream);
 		});
 	}
 
 	@Test
 	void testGetCallsLoadLicenseAndReturnsValue() throws Exception {
-		withMockedLicense((stream, mockedThirdParty, mockedLicenseCtor) -> {
+		withMockedLicense((stream, mockedThirdParty, mockedLicenseConstructor) -> {
 			Supplier<String> supplier = () -> "HelloWorld";
 			String result = WordFactory.get(supplier);
 			assertEquals("HelloWorld", result);
 			mockedThirdParty.verify(ThirdPartyLicenses::getDocumentFactoryLicense, times(1));
-			assertEquals(1, mockedLicenseCtor.constructed().size());
-			verify(mockedLicenseCtor.constructed().get(0)).setLicense(stream);
+			assertEquals(1, mockedLicenseConstructor.constructed().size());
+			verify(mockedLicenseConstructor.constructed().get(0)).setLicense(stream);
 		});
 	}
 
 	@Test
 	void testRunCallsLoadLicenseAndExecutesRunnable() throws Exception {
-		withMockedLicense((stream, mockedThirdParty, mockedLicenseCtor) -> {
+		withMockedLicense((stream, mockedThirdParty, mockedLicenseConstructor) -> {
 			final boolean[] executed = { false };
 			Runnable runnable = () -> executed[0] = true;
 			WordFactory.run(runnable);
 			assertTrue(executed[0]);
 			mockedThirdParty.verify(ThirdPartyLicenses::getDocumentFactoryLicense, times(1));
-			assertEquals(1, mockedLicenseCtor.constructed().size());
-			verify(mockedLicenseCtor.constructed().get(0)).setLicense(stream);
+			assertEquals(1, mockedLicenseConstructor.constructed().size());
+			verify(mockedLicenseConstructor.constructed().get(0)).setLicense(stream);
 		});
 	}
 
-	/** Functional interface for shared test logic */
 	@FunctionalInterface
 	private interface TestLogic {
 		void run(InputStream stream, MockedStatic<ThirdPartyLicenses> mockedThirdParty,
 				MockedConstruction<License> mockedLicenseCtor) throws Exception;
+	}
+
+	private void withMockedLicense(TestLogic logic) throws Exception {
+		try (MockedStatic<ThirdPartyLicenses> mockedThirdParty = Mockito.mockStatic(ThirdPartyLicenses.class)) {
+			InputStream dummyStream = mock(InputStream.class);
+			mockedThirdParty.when(ThirdPartyLicenses::getDocumentFactoryLicense).thenReturn(dummyStream);
+
+			try (MockedConstruction<License> mockedLicenseConstructor = Mockito.mockConstruction(License.class,
+					(mock, context) -> doNothing().when(mock).setLicense(any(InputStream.class)))) {
+				logic.run(dummyStream, mockedThirdParty, mockedLicenseConstructor);
+			}
+		}
 	}
 }
