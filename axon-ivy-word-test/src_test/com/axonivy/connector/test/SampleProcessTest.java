@@ -1,4 +1,4 @@
-package com.axonivy.utils.test;
+package com.axonivy.connector.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,29 +29,4 @@ import ch.ivyteam.ivy.workflow.CaseState;
 @IvyProcessTest
 public class SampleProcessTest{
   
-  private static final BpmProcess testee = BpmProcess.path("MyProcess");
-  
-  @Test
-  public void callProcess(BpmClient bpmClient){
-    BpmElement startable = testee.elementName("start.ivp");
-    ExecutionResult result = bpmClient.start().process(startable).execute();
-    CompositeObject data = result.data().last();
-    assertThat(data).isNotNull();
-  }
-  
-  @Test
-  @Disabled("illustrative code: needs adaption to your environment")
-  public void workflow(BpmClient bpmClient)
-  {
-    BpmElement startable = testee.elementName("start.ivp");
-    
-    // start as authenticated user
-    String myUser = "myUser";
-    ExecutionResult result = bpmClient.start().process(startable).as().user(myUser).execute();
-    assertThat(result.workflow().activeCase()).isEqualTo(CaseState.RUNNING);
-    assertThat(result.workflow().executedTask().responsibles().displayName()).isEqualTo(myUser);
-    
-    // continue after task/switch
-    bpmClient.start().anyActiveTask(result).as().role("supervisor").execute();
-  }
 }
