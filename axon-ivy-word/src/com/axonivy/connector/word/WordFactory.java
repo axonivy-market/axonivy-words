@@ -1,9 +1,7 @@
 package com.axonivy.connector.word;
 
 import java.util.function.Supplier;
-
 import com.aspose.words.License;
-
 import ch.ivyteam.ivy.ThirdPartyLicenses;
 
 public final class WordFactory {
