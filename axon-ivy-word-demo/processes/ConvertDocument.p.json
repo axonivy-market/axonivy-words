@@ -26,6 +26,9 @@
     }, {
       "id" : "f3",
       "type" : "DialogCall",
+      "config" : {
+        "dialog" : "com.axonivy.connector.axon.ivy.word.demo.ConvertDocument:start()"
+      },
       "visual" : {
         "at" : { "x" : 224, "y" : 64 }
       },
