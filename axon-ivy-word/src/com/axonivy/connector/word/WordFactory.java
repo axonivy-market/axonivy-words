@@ -1,21 +1,24 @@
 package com.axonivy.connector.word;
 
+import java.io.InputStream;
 import java.util.function.Supplier;
 import com.aspose.words.License;
 import ch.ivyteam.ivy.ThirdPartyLicenses;
+import ch.ivyteam.ivy.environment.Ivy;
 
 public final class WordFactory {
 	private static License license;
 
 	public static void loadLicense() {
 		if (license == null) {
-			try (var lic = ThirdPartyLicenses.getDocumentFactoryLicense();) {
-				if (lic != null) {
+			try {
+				InputStream in = ThirdPartyLicenses.getDocumentFactoryLicense();
+				if (in != null) {
 					license = new License();
-					license.setLicense(lic);
+					license.setLicense(in);
 				}
 			} catch (Exception e) {
-				e.printStackTrace();
+				Ivy.log().error(e);
 				license = null;
 			}
 		}

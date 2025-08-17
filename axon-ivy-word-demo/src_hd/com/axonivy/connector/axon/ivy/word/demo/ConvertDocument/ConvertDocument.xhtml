@@ -13,12 +13,10 @@
 				the case</h3>
 			<br></br>
 			<h:form id="form" enctype="multipart/form-data">
-				<p:fileUpload value="#{convertDocumentBean.file}" mode="simple" />
-
 				<p:commandButton value="Convert and Download" ajax="false"
-                                 icon="pi pi-download">
-                    <p:fileDownload value="#{convertDocumentBean.convertAndGetFile}" />
-                </p:commandButton>
+					icon="pi pi-download">
+					<p:fileDownload value="#{convertDocumentBean.convertedFile}" />
+				</p:commandButton>
 			</h:form>
 
 		</ui:define>

@@ -13,7 +13,7 @@
   <version>13.0.0-SNAPSHOT</version>
   <packaging>iar</packaging>
   <properties>
-    <aspose.version>25.4</aspose.version>
+    <aspose.version>24.4</aspose.version>
   </properties>
   <dependencies>
     <dependency>
@@ -58,6 +58,7 @@
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
+        <extensions>true</extensions>
       </plugin>
     </plugins>
   </build>
