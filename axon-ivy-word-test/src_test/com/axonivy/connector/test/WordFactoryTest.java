@@ -18,7 +18,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import com.aspose.words.License;
-import com.axonivy.connector.word.WordFactory;
+import com.axonivy.connector.word.service.WordFactory;
 
 import ch.ivyteam.ivy.ThirdPartyLicenses;
 import ch.ivyteam.ivy.environment.IvyTest;
@@ -75,11 +75,11 @@ class WordFactoryTest {
 				MockedConstruction<License> mockedLicenseCtor) throws Exception;
 	}
 
+	@SuppressWarnings("resource")
 	private void withMockedLicense(TestLogic logic) throws Exception {
 		try (MockedStatic<ThirdPartyLicenses> mockedThirdParty = Mockito.mockStatic(ThirdPartyLicenses.class)) {
 			InputStream dummyStream = mock(InputStream.class);
 			mockedThirdParty.when(ThirdPartyLicenses::getDocumentFactoryLicense).thenReturn(dummyStream);
-
 			try (MockedConstruction<License> mockedLicenseConstructor = Mockito.mockConstruction(License.class,
 					(mock, context) -> doNothing().when(mock).setLicense(any(InputStream.class)))) {
 				logic.run(dummyStream, mockedThirdParty, mockedLicenseConstructor);

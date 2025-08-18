@@ -10,7 +10,7 @@ import java.net.URL;
 import com.aspose.words.DocSaveOptions;
 import com.aspose.words.Document;
 import com.aspose.words.SaveOptions;
-import com.axonivy.connector.word.WordFactory;
+import com.axonivy.connector.word.service.WordFactory;
 
 import ch.ivyteam.ivy.environment.Ivy;
 
