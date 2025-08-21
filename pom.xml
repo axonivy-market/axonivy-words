@@ -3,7 +3,7 @@
   <groupId>com.axonivy.connector</groupId>
   <artifactId>axon-ivy-word-modules</artifactId>
   <name>axon-ivy-word</name>
-  <version>13.0.0-SNAPSHOT</version>
+  <version>13.1.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
