@@ -8,7 +8,7 @@
     <version>13.1.1</version>
     <relativePath></relativePath>
   </parent>
-  <groupId>com.axonivy.utils.word</groupId>
+  <groupId>com.axonivy.utils.word.axon.ivy.word</groupId>
   <artifactId>axon-ivy-word-test</artifactId>
   <version>13.1.1-SNAPSHOT</version>
   <packaging>iar</packaging>
@@ -18,7 +18,7 @@
       <artifactId>ivy-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.axonivy.utils.word</groupId>
+      <groupId>com.axonivy.utils.word.axon.ivy.word</groupId>
       <artifactId>axon-ivy-word</artifactId>
       <version>${project.version}</version>
       <type>iar</type>
