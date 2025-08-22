@@ -1,7 +1,7 @@
 # Axon Ivy Word
 Axon Ivy Word (prior Docfactory Doc) is a lightweight extension designed to simplify working with Word documents inside the Axon Ivy Platform.The Axon Ivy Word is open, can be extended and is based on the Java Library Aspose that is included in the Axon Ivy platform.
 
-This connector:
+This utils:
 - Effortless License Setup: Simplifies Aspose license configuration, so you can start building solutions without administrative overhead.
 - Reusable Components: Provides ready-to-use runnable and consumable methods for common tasks, enabling faster and more consistent development.
 - Designed with minimal footprint: making it easy to install, integrate, and extend without unnecessary complexity.

@@ -8,7 +8,7 @@
     <version>13.1.1</version>
     <relativePath></relativePath>
   </parent>
-  <groupId>com.axonivy.connector</groupId>
+  <groupId>com.axonivy.utils.word</groupId>
   <artifactId>axon-ivy-word-test</artifactId>
   <version>13.1.1-SNAPSHOT</version>
   <packaging>iar</packaging>
@@ -18,21 +18,21 @@
       <artifactId>ivy-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.axonivy.connector</groupId>
+      <groupId>com.axonivy.utils.word</groupId>
       <artifactId>axon-ivy-word</artifactId>
       <version>${project.version}</version>
       <type>iar</type>
     </dependency>
     <dependency>
-    	<groupId>com.axonivy.ivy.test</groupId>
-    	<artifactId>unit-tester</artifactId>
-    	<scope>test</scope>
+      <groupId>com.axonivy.ivy.test</groupId>
+      <artifactId>unit-tester</artifactId>
+      <scope>test</scope>
     </dependency>
     <dependency>
-        <groupId>org.mockito</groupId>
-        <artifactId>mockito-inline</artifactId>
-        <version>5.2.0</version>
-        <scope>test</scope>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-inline</artifactId>
+      <version>5.2.0</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <repositories>
