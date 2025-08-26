@@ -7,6 +7,9 @@ This utils:
 - Designed with minimal footprint: making it easy to install, integrate, and extend without unnecessary complexity.
 
 ## Setup
+Ensure that the Aspose license is loaded through the `WordFactory` class before processing any document.
+
+![load license](images/load-license.png)
 
 > To insert images into a mail merge template, we recommend using the
 [Aspose DocumentBuilder](https://docs.aspose.com/words/java/insert-picture-in-document/),

@@ -13,7 +13,7 @@ public final class WordFactory {
   /**
    * Initializes the Aspose DocumentFactory license.
    * <p>
-   * Ensures the license is loaded once per application lifecycle. If not already
+   * Ensures the license is loaded once per request. If not already
    * set, this method retrieves the license from {@link ThirdPartyLicenses} and
    * applies it to the Aspose {@link License} instance.
    * </p>
