@@ -1,4 +1,4 @@
-package com.axonivy.utils.word.demo.bean;
+package com.axonivy.utils.axon.ivy.word.demo.bean;
 
 import java.io.ByteArrayInputStream;
 import java.io.Serializable;
@@ -10,8 +10,8 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.file.UploadedFile;
 
 import com.aspose.words.SaveFormat;
-import com.axonivy.utils.word.demo.util.DocumentUtils;
-import com.axonivy.utils.word.service.WordFactory;
+import com.axonivy.utils.axon.ivy.word.demo.util.DocumentUtils;
+import com.axonivy.utils.axon.ivy.word.service.WordFactory;
 
 @ManagedBean
 @ViewScoped

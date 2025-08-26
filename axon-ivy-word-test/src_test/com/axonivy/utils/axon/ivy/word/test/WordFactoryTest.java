@@ -1,4 +1,4 @@
-package com.axonivy.utils.test;
+package com.axonivy.utils.axon.ivy.word.test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,7 +18,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import com.aspose.words.License;
-import com.axonivy.utils.word.service.WordFactory;
+import com.axonivy.utils.axon.ivy.word.service.WordFactory;
 
 import ch.ivyteam.ivy.ThirdPartyLicenses;
 import ch.ivyteam.ivy.environment.IvyTest;

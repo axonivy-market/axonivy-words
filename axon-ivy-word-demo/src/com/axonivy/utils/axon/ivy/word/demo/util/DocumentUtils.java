@@ -1,4 +1,4 @@
-package com.axonivy.utils.word.demo.util;
+package com.axonivy.utils.axon.ivy.word.demo.util;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -11,7 +11,7 @@ import org.primefaces.model.file.UploadedFile;
 import com.aspose.words.DocSaveOptions;
 import com.aspose.words.Document;
 import com.aspose.words.SaveOptions;
-import com.axonivy.utils.word.service.WordFactory;
+import com.axonivy.utils.axon.ivy.word.service.WordFactory;
 
 import ch.ivyteam.ivy.environment.Ivy;
 

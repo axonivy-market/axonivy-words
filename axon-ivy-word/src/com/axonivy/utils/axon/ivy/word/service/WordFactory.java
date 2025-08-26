@@ -1,5 +1,5 @@
 
-package com.axonivy.utils.word.service;
+package com.axonivy.utils.axon.ivy.word.service;
 
 import java.io.InputStream;
 import java.util.function.Supplier;
