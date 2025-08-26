@@ -8,7 +8,7 @@
     <version>13.1.1</version>
     <relativePath></relativePath>
   </parent>
-  <groupId>com.axonivy.utils.word.axon.ivy.word</groupId>
+  <groupId>com.axonivy.utils.axon.ivy.word</groupId>
   <artifactId>axon-ivy-word</artifactId>
   <version>13.1.1-SNAPSHOT</version>
   <packaging>iar</packaging>
