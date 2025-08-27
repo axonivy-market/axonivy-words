@@ -1,17 +1,20 @@
 # Axon Ivy Word
-Axon Ivy Word (prior Docfactory Doc) is a lightweight extension designed to simplify working with Word documents inside the Axon Ivy Platform.The Axon Ivy Word is open, can be extended and is based on the Java Library Aspose that is included in the Axon Ivy platform.
+*(formerly Docfactory Doc)*
 
-This utils:
-- Effortless License Setup: Simplifies Aspose license configuration, so you can start building solutions without administrative overhead.
-- Reusable Components: Provides ready-to-use runnable and consumable methods for common tasks, enabling faster and more consistent development.
-- Designed with minimal footprint: making it easy to install, integrate, and extend without unnecessary complexity.
+**Axon Ivy Words** is a lightweight utility that makes it easy to work with Word documents inside the Axon Ivy Platform.
+It builds on the embedded Aspose.Words Java library and provides ready-to-use building blocks for common document tasks.
+
+### Key Features
+- **Effortless license setup** – Load and configure the Aspose license via the `WordFactory` with minimal overhead.
+- **Reusable components** – Predefined runnable and consumable methods accelerate development and ensure consistency.
+- **Lightweight and extendable** – Small footprint, easy to install, integrate, and adapt to your project’s needs.
 
 ## Setup
-Ensure that the Aspose license is loaded through the `WordFactory` class before processing any document.
+Make sure the Aspose license is loaded through the `WordFactory` class before processing any document.
 
 ![load license](images/load-license.png)
 
-> To insert images into a mail merge template, we recommend using the
-[Aspose DocumentBuilder](https://docs.aspose.com/words/java/insert-picture-in-document/),
-which programmatically retrieves and inserts images during the merge process. This approach provides
-a more stable and maintainable solution than relying on the `INCLUDEPICTURE` mail merge field.
+## Best Practice: Mail Merge with Images
+
+For inserting images into mail merge templates, we recommend using the [Aspose DocumentBuilder](https://docs.aspose.com/words/java/insert-picture-in-document/),
+This approach programmatically retrieves and embeds images, offering a more stable and maintainable solution than relying on the `INCLUDEPICTURE` field.
