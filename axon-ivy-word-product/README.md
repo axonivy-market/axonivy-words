@@ -1,4 +1,4 @@
-# Axon Ivy Word
+# Axon Ivy Words
 *(formerly Docfactory Doc)*
 
 **Axon Ivy Words** is a lightweight utility that makes it easy to work with Word documents inside the Axon Ivy Platform.
