@@ -1,8 +1,7 @@
 # Axon Ivy Words
 *(formerly Docfactory Doc)*
 
-**Axon Ivy Words** is a lightweight utility that makes it easy to work with Word documents inside the Axon Ivy Platform.
-It builds on the embedded Aspose.Words Java library and provides ready-to-use building blocks for common document tasks.
+**Axon Ivy Words** is a lightweight utility that simplifies document processing tasks inside the Axon Ivy Platform. It builds on the embedded Aspose.Words Java library and provides ready-to-use building blocks for common document operations.
 
 ### Key Features
 - **Effortless license setup** – Load and configure the Aspose license via the `WordFactory` with minimal overhead.
