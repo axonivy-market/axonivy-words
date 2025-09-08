@@ -9,35 +9,33 @@ import javax.faces.bean.ViewScoped;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.file.UploadedFile;
 
-import com.aspose.words.SaveFormat;
 import com.axonivy.utils.axon.ivy.word.demo.util.DocumentUtils;
-import com.axonivy.utils.axon.ivy.word.service.WordFactory;
 
 @ManagedBean
 @ViewScoped
 public class ConvertDocumentBean implements Serializable {
   private static final long serialVersionUID = 1L;
-  private final String PDF_EXTENTION = ".pdf";
-  private final String DOT = ".";
+  private static final String PDF_EXTENSION = ".pdf";
+  private static final String DOT = ".";
   private UploadedFile uploadedFile;
   private DefaultStreamedContent convertedFile;
 
   public void convert() {
     if (uploadedFile != null) {
-      String pdfFileName = updateFIleExtention();
-      WordFactory.loadLicense();
+      String pdfFileName = updateFileExtension();
+      // Using the new fluent API - no need to call WordFactory.loadLicense() 
+      // as it's automatically loaded in the static initializer
       setConvertedFile(DefaultStreamedContent.builder().name(pdfFileName).contentType("application/pdf")
-          .stream(() -> new ByteArrayInputStream(DocumentUtils.convertTo(SaveFormat.PDF, uploadedFile))).build());
+          .stream(() -> new ByteArrayInputStream(DocumentUtils.convertToPdf(uploadedFile))).build());
     }
   }
 
-  private String updateFIleExtention() {
+  private String updateFileExtension() {
     String originalName = uploadedFile.getFileName();
     String baseName = originalName != null && originalName.contains(DOT)
         ? originalName.substring(0, originalName.lastIndexOf(DOT))
         : originalName;
-    String pdfFileName = baseName + PDF_EXTENTION;
-    return pdfFileName;
+    return baseName + PDF_EXTENSION;
   }
 
   public DefaultStreamedContent getConvertedFile() {
