@@ -1,0 +1,15 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "PreviewDocumentData",
+  "namespace" : "com.axonivy.utils.axon.ivy.word.demo.PreviewDocument",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "result",
+    "type" : "org.primefaces.model.StreamedContent",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "filePath",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

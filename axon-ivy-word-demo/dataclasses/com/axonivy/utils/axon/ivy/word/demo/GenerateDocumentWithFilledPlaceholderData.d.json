@@ -1,0 +1,30 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "GenerateDocumentWithFilledPlaceholderData",
+  "namespace" : "com.axonivy.utils.axon.ivy.word.demo",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "candidate",
+    "type" : "com.axonivy.utils.axon.ivy.word.demo.Candidate",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "templateFile",
+    "type" : "java.io.File",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "mergeFields",
+    "type" : "List<com.axonivy.utils.word.service.mergefield.TemplateMergeField>"
+  }, {
+    "name" : "file",
+    "type" : "java.io.File",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "streamedContent",
+    "type" : "org.primefaces.model.StreamedContent",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "optionalOutputpath",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

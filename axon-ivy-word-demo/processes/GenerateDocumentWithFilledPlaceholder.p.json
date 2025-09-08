@@ -1,0 +1,159 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
+  "id" : "198D013F94BBADEA",
+  "config" : {
+    "data" : "com.axonivy.utils.axon.ivy.word.demo.GenerateDocumentWithFilledPlaceholderData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Document With Filled Placeholder",
+      "config" : {
+        "signature" : "start"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f13" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : [
+        "Get Template from",
+        "CMS"
+      ],
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.utils.word.demo.ExportFromCms;",
+            "",
+            "out.templateFile = ExportFromCms.export(\"/Templates/myTemplate\", \"doc\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 464, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f7", "color" : "default" }
+      ]
+    }, {
+      "id" : "f7",
+      "type" : "SubProcessCall",
+      "name" : [
+        "Create Document",
+        "from template"
+      ],
+      "config" : {
+        "processCall" : "generateFillingWordAndPdfFile:createDocFromTemplate(CompositeObject,String,String,String,List<com.axonivy.utils.word.service.mergefield.TemplateMergeField>)",
+        "call" : {
+          "map" : {
+            "param.data" : "in.candidate",
+            "param.optionalOutputpath" : "new File(\"ivy_DocFactoryDemo\").getAbsolutePath()",
+            "param.templatePath" : "in.templateFile.getAbsolutePath()",
+            "param.optionalLetterName" : "\"DocumentFromTemplate\"",
+            "param.mergeFields" : "in.mergeFields"
+          }
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "result.fileOperationMessage"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 648, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f1", "to" : "f11" }
+      ]
+    }, {
+      "id" : "f9",
+      "type" : "TaskEndPage",
+      "config" : {
+        "page" : "view/done.xhtml"
+      },
+      "visual" : {
+        "at" : { "x" : 1264, "y" : 120 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    }, {
+      "id" : "f8",
+      "type" : "DialogCall",
+      "config" : {
+        "dialog" : "com.axonivy.utils.axon.ivy.word.demo.PreviewDocument:start(org.primefaces.model.StreamedContent,String)",
+        "call" : {
+          "map" : {
+            "param.streamedContent" : "in.streamedContent",
+            "param.filePath" : "in.file.getPath()"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 1072, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f10", "to" : "f9", "color" : "default" }
+      ]
+    }, {
+      "id" : "f11",
+      "type" : "SubProcessCall",
+      "config" : {
+        "processCall" : "previewDocumentData:previewDocument(java.io.File)",
+        "call" : {
+          "map" : {
+            "param.file" : "in.file"
+          }
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "in.file",
+            "out.streamedContent" : "result.streamedContent"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 864, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f12", "to" : "f8", "color" : "default" }
+      ]
+    }, {
+      "id" : "f13",
+      "type" : "DialogCall",
+      "name" : "Input an object",
+      "config" : {
+        "dialog" : "com.axonivy.utils.axon.ivy.word.demo.FillingMergeFields:start()",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.candidate" : "result.candidate"
+          },
+          "code" : [
+            "import com.axonivy.utils.word.service.mergefield.TemplateMergeField;",
+            "in.mergeFields.add(new TemplateMergeField(\"age\", out.candidate.age));",
+            "in.mergeFields.add(new TemplateMergeField(\"house\", out.candidate.house));",
+            "in.mergeFields.add(new TemplateMergeField(\"name\", out.candidate.name));",
+            "in.mergeFields.add(new TemplateMergeField(\"position\", out.candidate.position));",
+            "in.mergeFields.add(new TemplateMergeField(\"school\", out.candidate.school));"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 288, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f5" }
+      ]
+    } ],
+  "layout" : {
+    "lanes" : [ {
+        "offset" : 32,
+        "size" : 192
+      } ]
+  }
+}

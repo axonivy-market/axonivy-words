@@ -28,7 +28,7 @@ class WordFactoryTest {
 
   @BeforeEach
   void resetLicenseField() throws Exception {
-    var field = WordFactory.class.getDeclaredField("license");
+    var field = WordFactoryTest.class.getDeclaredField("license");
     field.setAccessible(true);
     field.set(null, null);
   }
