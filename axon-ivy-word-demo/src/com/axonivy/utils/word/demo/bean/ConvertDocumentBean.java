@@ -4,7 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
@@ -15,7 +15,7 @@ import com.axonivy.utils.word.service.DocumentConstants;
 import com.axonivy.utils.word.service.WordFactory;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ConvertDocumentBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private final String DEFAULT_SAMPLE_FILE_PATH = "/resources/demo.docx";
@@ -45,5 +45,4 @@ public class ConvertDocumentBean implements Serializable {
 	public void setContent(StreamedContent content) {
 		this.content = content;
 	}
-
 }

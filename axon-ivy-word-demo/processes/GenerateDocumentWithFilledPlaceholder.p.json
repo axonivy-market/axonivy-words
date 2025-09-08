@@ -51,7 +51,7 @@
         "call" : {
           "map" : {
             "param.data" : "in.candidate",
-            "param.optionalOutputpath" : "new File(\"ivy_DocFactoryDemo\").getAbsolutePath()",
+            "param.optionalOutputpath" : "new File(\"ivy_DocumentDemo\").getAbsolutePath()",
             "param.templatePath" : "in.templateFile.getAbsolutePath()",
             "param.optionalLetterName" : "\"DocumentFromTemplate\"",
             "param.mergeFields" : "in.mergeFields"
@@ -68,59 +68,24 @@
         "at" : { "x" : 648, "y" : 120 }
       },
       "connect" : [
-        { "id" : "f1", "to" : "f11" }
+        { "id" : "f1", "to" : "f8" }
       ]
-    }, {
-      "id" : "f9",
-      "type" : "TaskEndPage",
-      "config" : {
-        "page" : "view/done.xhtml"
-      },
-      "visual" : {
-        "at" : { "x" : 1264, "y" : 120 },
-        "labelOffset" : { "x" : 13, "y" : 33 }
-      }
     }, {
       "id" : "f8",
       "type" : "DialogCall",
       "config" : {
-        "dialog" : "com.axonivy.utils.axon.ivy.word.demo.PreviewDocument:start(org.primefaces.model.StreamedContent,String)",
+        "dialog" : "com.axonivy.utils.axon.ivy.word.demo.PreviewDocument:start(String)",
         "call" : {
           "map" : {
-            "param.streamedContent" : "in.streamedContent",
             "param.filePath" : "in.file.getPath()"
           }
         }
       },
       "visual" : {
-        "at" : { "x" : 1072, "y" : 120 }
+        "at" : { "x" : 824, "y" : 120 }
       },
       "connect" : [
-        { "id" : "f10", "to" : "f9", "color" : "default" }
-      ]
-    }, {
-      "id" : "f11",
-      "type" : "SubProcessCall",
-      "config" : {
-        "processCall" : "previewDocumentData:previewDocument(java.io.File)",
-        "call" : {
-          "map" : {
-            "param.file" : "in.file"
-          }
-        },
-        "output" : {
-          "map" : {
-            "out" : "in",
-            "out.file" : "in.file",
-            "out.streamedContent" : "result.streamedContent"
-          }
-        }
-      },
-      "visual" : {
-        "at" : { "x" : 864, "y" : 120 }
-      },
-      "connect" : [
-        { "id" : "f12", "to" : "f8", "color" : "default" }
+        { "id" : "f9", "to" : "f3" }
       ]
     }, {
       "id" : "f13",
@@ -149,6 +114,12 @@
       "connect" : [
         { "id" : "f4", "to" : "f5" }
       ]
+    }, {
+      "id" : "f3",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 1000, "y" : 120 }
+      }
     } ],
   "layout" : {
     "lanes" : [ {

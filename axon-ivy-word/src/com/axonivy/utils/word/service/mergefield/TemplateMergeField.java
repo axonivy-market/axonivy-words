@@ -14,8 +14,8 @@ public class TemplateMergeField {
   /** The MergeField value that should be inserted into the Merge field */
   private Object value;
   private Locale locale = DocumentConstants.DEFAULT_LOCALE;
-  private TemplateMergeFieldType type = TemplateMergeFieldType.TEXT;
-  private DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.YEAR_FIELD, locale);
+  public TemplateMergeFieldType type = TemplateMergeFieldType.TEXT;
+  public DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.YEAR_FIELD, locale);
   private NumberFormat numberFormat = NumberFormat.getInstance(locale);
 
   /**

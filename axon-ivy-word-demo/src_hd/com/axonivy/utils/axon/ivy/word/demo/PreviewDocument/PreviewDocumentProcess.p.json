@@ -8,23 +8,21 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "HtmlDialogStart",
-      "name" : "start(StreamedContent,String)",
+      "name" : "start(String)",
       "config" : {
         "signature" : "start",
         "input" : {
           "params" : [
-            { "name" : "streamedContent", "type" : "org.primefaces.model.StreamedContent", "desc" : "" },
             { "name" : "filePath", "type" : "String", "desc" : "" }
           ],
           "map" : {
-            "out.filePath" : "param.filePath",
-            "out.result" : "param.streamedContent"
+            "out.filePath" : "param.filePath"
           }
         },
         "guid" : "198EFE723837AC77"
       },
       "visual" : {
-        "at" : { "x" : 96, "y" : 64 }
+        "at" : { "x" : 104, "y" : 64 }
       },
       "connect" : [
         { "id" : "f2", "to" : "f1" }

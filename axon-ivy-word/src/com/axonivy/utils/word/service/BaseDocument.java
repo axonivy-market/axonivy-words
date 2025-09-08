@@ -22,13 +22,12 @@ public abstract class BaseDocument {
 
   /** the list of supported formats */
   public static final String[] SUPPORTED_OUTPUT_FORMATS = new String[] {
-      "doc", "docx", "html", "txt", "pdf", "odt"
+      "doc", "docx"
   };
 
   public static final int UNSUPPORTED_FORMAT = DocumentConstants.UNSUPPORTED_FORMAT;
   public static final int DOC_FORMAT = DocumentConstants.DOC_FORMAT;
   public static final int DOCX_FORMAT = DocumentConstants.DOCX_FORMAT;
-  public static final int PDF_FORMAT = DocumentConstants.PDF_FORMAT;
 
   public BaseDocument() {
     this.outputFormat = SUPPORTED_OUTPUT_FORMATS[0]; 
@@ -46,7 +45,7 @@ public abstract class BaseDocument {
             .newInstance();
       }
     } catch (Exception e) {
-      Ivy.log().error("Exception generating the docFactory. " + e.getMessage(), e);
+      Ivy.log().error("Exception generating the document " + e.getMessage(), e);
       return null;
     }
   }

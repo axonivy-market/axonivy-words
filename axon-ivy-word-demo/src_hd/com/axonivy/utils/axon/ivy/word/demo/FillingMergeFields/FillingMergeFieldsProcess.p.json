@@ -17,8 +17,7 @@
           ],
           "map" : {
             "result.candidate" : "in.candidate"
-          },
-          "code" : "ivy.log.info(\"result\"+result.candidate.name);"
+          }
         },
         "guid" : "19927EA2B60BFCD5"
       },
