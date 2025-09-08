@@ -1,4 +1,4 @@
-package com.axonivy.utils.axon.ivy.word.service;
+package com.axonivy.utils.axon.ivy.words.service;
 
 /**
  * Exception thrown when document conversion operations fail.

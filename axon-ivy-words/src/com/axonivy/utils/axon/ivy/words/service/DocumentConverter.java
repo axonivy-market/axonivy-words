@@ -1,4 +1,4 @@
-package com.axonivy.utils.axon.ivy.word.service;
+package com.axonivy.utils.axon.ivy.words.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import com.aspose.words.DocSaveOptions;
 import com.aspose.words.Document;
+import com.aspose.words.SaveFormat;
 import com.aspose.words.SaveOptions;
 
 import ch.ivyteam.ivy.environment.Ivy;
@@ -16,7 +17,7 @@ import ch.ivyteam.ivy.environment.Ivy;
  */
 public class DocumentConverter {
   private Document document;
-  private Format targetFormat;
+  private int targetFormat;
 
   /**
    * Creates a new DocumentConverter instance.
@@ -99,7 +100,7 @@ public class DocumentConverter {
    * @return this converter instance for method chaining
    */
   public DocumentConverter toPdf() {
-    return to(Format.PDF);
+    return to(SaveFormat.PDF);
   }
 
   /**
@@ -108,7 +109,7 @@ public class DocumentConverter {
    * @param format the target format
    * @return this converter instance for method chaining
    */
-  public DocumentConverter to(Format format) {
+  public DocumentConverter to(int format) {
     if (document == null) {
       throw new IllegalStateException("No source document set. Call from() method first.");
     }
@@ -125,11 +126,11 @@ public class DocumentConverter {
   public byte[] asBytes() {
     validateConversionReady();
     try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-      SaveOptions options = DocSaveOptions.createSaveOptions(targetFormat.getAsposeFormat());
+      SaveOptions options = DocSaveOptions.createSaveOptions(targetFormat);
       document.save(outputStream, options);
       return outputStream.toByteArray();
     } catch (Exception e) {
-      Ivy.log().error("Failed to convert document to " + targetFormat.name(), e);
+      Ivy.log().error("Failed to convert document", e);
       throw new DocumentConversionException("Failed to convert document", e);
     }
   }
@@ -151,7 +152,7 @@ public class DocumentConverter {
         parentDir.mkdirs();
       }
       
-      SaveOptions options = DocSaveOptions.createSaveOptions(targetFormat.getAsposeFormat());
+      SaveOptions options = DocSaveOptions.createSaveOptions(targetFormat);
       document.save(outputPath, options);
       return outputFile;
     } catch (Exception e) {
@@ -192,8 +193,8 @@ public class DocumentConverter {
     if (document == null) {
       throw new IllegalStateException("No source document set. Call from() method first.");
     }
-    if (targetFormat == null) {
-      throw new IllegalStateException("No target format set. Call to() or toPdf() method first.");
-    }
+//    if (targetFormat == null) {
+//      throw new IllegalStateException("No target format set. Call to() or toPdf() method first.");
+//    }
   }
 }
