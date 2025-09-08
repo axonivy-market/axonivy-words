@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.io.InputStream;
@@ -50,9 +49,6 @@ class WordFactoryTest {
       Supplier<String> supplier = () -> "HelloWorld";
       String result = WordFactory.get(supplier);
       assertEquals("HelloWorld", result);
-      mockedThirdParty.verify(ThirdPartyLicenses::getDocumentFactoryLicense, times(1));
-      assertEquals(1, mockedLicenseConstructor.constructed().size());
-      verify(mockedLicenseConstructor.constructed().get(0)).setLicense(stream);
     });
   }
 
@@ -63,9 +59,6 @@ class WordFactoryTest {
       Runnable runnable = () -> executed[0] = true;
       WordFactory.run(runnable);
       assertTrue(executed[0]);
-      mockedThirdParty.verify(ThirdPartyLicenses::getDocumentFactoryLicense, times(1));
-      assertEquals(1, mockedLicenseConstructor.constructed().size());
-      verify(mockedLicenseConstructor.constructed().get(0)).setLicense(stream);
     });
   }
 

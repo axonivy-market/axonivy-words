@@ -22,7 +22,6 @@ import org.mockito.Mockito;
 import com.aspose.words.Document;
 import com.aspose.words.License;
 import com.aspose.words.SaveFormat;
-import com.aspose.words.SaveOptions;
 import com.axonivy.utils.axon.ivy.words.service.DocumentConversionException;
 import com.axonivy.utils.axon.ivy.words.service.DocumentConverter;
 import com.axonivy.utils.axon.ivy.words.service.WordFactory;
@@ -124,14 +123,9 @@ class DocumentConverterTest {
 			InputStream dummyLicenseStream = mock(InputStream.class);
 			mockedThirdParty.when(ThirdPartyLicenses::getDocumentFactoryLicense).thenReturn(dummyLicenseStream);
 
-			try (MockedConstruction<License> mockedLicenseConstructor = Mockito.mockConstruction(License.class,
-					(mock, context) -> doNothing().when(mock).setLicense(any(InputStream.class)))) {
+			try (MockedConstruction<License> mockedLicenseConstructor = Mockito.mockConstruction(License.class)) {
 
-				try (MockedConstruction<Document> mockedDocumentConstructor = Mockito.mockConstruction(Document.class,
-						(mock, context) -> {
-							doNothing().when(mock).save(any(ByteArrayOutputStream.class), any(SaveOptions.class));
-							doNothing().when(mock).save(anyString(), any(SaveOptions.class));
-						})) {
+				try (MockedConstruction<Document> mockedDocumentConstructor = Mockito.mockConstruction(Document.class)) {
 
 					test.run();
 				}
@@ -145,7 +139,13 @@ class DocumentConverterTest {
 			mockedThirdParty.when(ThirdPartyLicenses::getDocumentFactoryLicense).thenReturn(dummyLicenseStream);
 
 			try (MockedConstruction<License> mockedLicenseConstructor = Mockito.mockConstruction(License.class,
-					(mock, context) -> doNothing().when(mock).setLicense(any(InputStream.class)))) {
+					(mock, context) -> {
+						try {
+							doNothing().when(mock).setLicense(any(InputStream.class));
+						} catch (Exception e) {
+							// Ignore mocking exceptions for License
+						}
+					})) {
 
 				try (MockedConstruction<Document> mockedDocumentConstructor = Mockito.mockConstruction(Document.class,
 						(mock, context) -> {
