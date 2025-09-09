@@ -23,6 +23,8 @@ import com.axonivy.utils.word.service.WordFactory;
 import ch.ivyteam.ivy.environment.Ivy;
 
 public class DocumentUtils {
+	private static final String CONVERTED_DEMO_FILE_NAME = "demo.pdf";
+
 	public static File getFileFromPath(String filePath) throws URISyntaxException {
         URL url = DocumentUtils.class.getResource(filePath.startsWith("/") ? filePath : "/" + filePath);
         if (url != null) {
@@ -62,10 +64,12 @@ public class DocumentUtils {
       return new byte[0];
     }
   }
-  public static StreamedContent getPDFFile(String filePath) {
-	    WordFactory.loadLicense();
-	    return DefaultStreamedContent.builder().name("demo.pdf").contentType(DocumentConstants.PDF_CONTENT_TYPE)
-	        .stream(() -> new ByteArrayInputStream(convertTo(SaveFormat.PDF, filePath)))
-	        .build();
-	  }
+  
+  public static StreamedContent convertPdfFile(String filePath) {
+		WordFactory.loadLicense();
+		return DefaultStreamedContent.builder().name(CONVERTED_DEMO_FILE_NAME)
+				.contentType(DocumentConstants.PDF_CONTENT_TYPE)
+				.stream(() -> new ByteArrayInputStream(convertTo(SaveFormat.PDF, filePath))).build();
+	}
+
 }

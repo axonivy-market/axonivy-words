@@ -61,7 +61,11 @@
           "map" : {
             "out" : "in",
             "out.file" : "result.fileOperationMessage"
-          }
+          },
+          "code" : [
+            "import com.axonivy.utils.word.demo.util.DocumentUtils;",
+            "out.streamedContent = DocumentUtils.convertPdfFile(out.file.getPath());"
+          ]
         }
       },
       "visual" : {
@@ -74,10 +78,11 @@
       "id" : "f8",
       "type" : "DialogCall",
       "config" : {
-        "dialog" : "com.axonivy.utils.axon.ivy.word.demo.PreviewDocument:start(String)",
+        "dialog" : "com.axonivy.utils.axon.ivy.word.demo.PreviewDocument:start(String,org.primefaces.model.StreamedContent)",
         "call" : {
           "map" : {
-            "param.filePath" : "in.file.getPath()"
+            "param.filePath" : "in.file.getPath()",
+            "param.streamContent" : "in.streamedContent"
           }
         }
       },
