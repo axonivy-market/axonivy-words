@@ -77,6 +77,7 @@
     }, {
       "id" : "f8",
       "type" : "DialogCall",
+      "name" : "Preview and download Document",
       "config" : {
         "dialog" : "com.axonivy.utils.axon.ivy.word.demo.PreviewDocument:start(String,org.primefaces.model.StreamedContent)",
         "call" : {
