@@ -18,79 +18,74 @@ import ch.ivyteam.ivy.scripting.objects.Recordset;
 
 public class AsposeDocument extends BaseDocument {
 
-    private Document doc;
+  private Document doc;
 
-    public AsposeDocument() {
-        super();
-        try {
-            WordFactory.loadLicense();
-        } catch (Exception e) {
-            Ivy.log().error("Aspose Words Licence error", e);
+  public AsposeDocument() {
+    super();
+    try {
+      WordFactory.loadLicense();
+    } catch (Exception e) {
+      Ivy.log().error("Aspose Words Licence error", e);
+    }
+  }
+
+  @Override
+  public File generateDocumentWithRegions(String templatePath, String outName, String outPath,
+      List<TemplateMergeField> mergeFields, Hashtable<String, Recordset> hashtable) {
+    try {
+      if (StringUtils.isBlank(templatePath)) {
+        return null;
+      }
+
+      File template = new File(templatePath);
+      if (!template.exists()) {
+        return null;
+      }
+
+      if (mergeFields == null) {
+        mergeFields = new ArrayList<>();
+      }
+      if (StringUtils.isBlank(outName)) {
+        outName = "serialLetter_" + System.currentTimeMillis();
+      }
+      if (StringUtils.isBlank(outPath)) {
+        outPath = "ivy_RIA_files/";
+      }
+
+      doc = new Document(template.getAbsolutePath());
+
+      String[] fieldNames = mergeFields.stream().map(TemplateMergeField::getMergeFieldName).toArray(String[]::new);
+      Object[] fieldValues = mergeFields.stream().map(TemplateMergeField::getValueForMailMerging).toArray();
+
+      doc.getMailMerge().execute(fieldNames, fieldValues);
+      if (hashtable != null) {
+        for (Map.Entry<String, Recordset> entry : hashtable.entrySet()) {
+          try {
+            IMailMergeDataSource ds = new MailMergeDataSource(entry.getValue(), entry.getKey());
+            doc.getMailMerge().executeWithRegions(ds);
+          } catch (Exception ex) {
+            Ivy.log().error("Error merging table: " + entry.getKey(), ex);
+          }
         }
+      }
+
+      String outputFilePath = outPath + outName + ".docx";
+      File outFile = new File(outputFilePath);
+      doc.save(outputFilePath, SaveFormat.DOCX);
+
+      return outFile;
+
+    } catch (Exception e) {
+      return null;
     }
+  }
 
-    @Override
-    public File generateDocumentWithRegions(String templatePath, String outName, String outPath,
-                                            List<TemplateMergeField> mergeFields, Hashtable<String, Recordset> hashtable) {
-        try {
-            if (StringUtils.isBlank(templatePath)) {
-                return null;
-            }
+  @Override
+  public boolean isFormatSupported(String format) {
+    return StringUtils.isNotBlank(format) && (format.equalsIgnoreCase("docx") || format.equalsIgnoreCase("doc"));
+  }
 
-            File template = new File(templatePath);
-            if (!template.exists()) {
-                return null;
-            }
-
-            if (mergeFields == null) {
-                mergeFields = new ArrayList<>();
-            }
-            if (StringUtils.isBlank(outName)) {
-                outName = "serialLetter_" + System.currentTimeMillis();
-            }
-            if (StringUtils.isBlank(outPath)) {
-                outPath = "ivy_RIA_files/";
-            }
-
-            doc = new Document(template.getAbsolutePath());
-
-            String[] fieldNames = mergeFields.stream()
-                    .map(TemplateMergeField::getMergeFieldName)
-                    .toArray(String[]::new);
-            Object[] fieldValues = mergeFields.stream()
-                    .map(TemplateMergeField::getValueForMailMerging)
-                    .toArray();
-
-            doc.getMailMerge().execute(fieldNames, fieldValues);
-            if (hashtable != null) {
-                for (Map.Entry<String, Recordset> entry : hashtable.entrySet()) {
-                    try {
-                        IMailMergeDataSource ds = new MailMergeDataSource(entry.getValue(), entry.getKey());
-                        doc.getMailMerge().executeWithRegions(ds);
-                    } catch (Exception ex) {
-                        Ivy.log().error("Error merging table: " + entry.getKey(), ex);
-                    }
-                }
-            }
-
-            String outputFilePath = outPath + outName + ".docx";
-            File outFile = new File(outputFilePath);
-            doc.save(outputFilePath, SaveFormat.DOCX);
-
-            return outFile;
-
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    @Override
-    public boolean isFormatSupported(String format) {
-        return StringUtils.isNotBlank(format) &&
-               (format.equalsIgnoreCase("docx") || format.equalsIgnoreCase(".doc"));
-    }
-
-    public static String[] getSupportedFormats() {
-        return new String[] {"docx","doc"};
-    }
+  public static String[] getSupportedFormats() {
+    return new String[] {"docx", "doc"};
+  }
 }

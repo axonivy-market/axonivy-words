@@ -2,6 +2,7 @@ package com.axonivy.utils.axon.ivy.words.service.mergefield;
 
 /**
  * Enum of the TemplateMergeField types
+ * 
  * @author ec
  *
  */

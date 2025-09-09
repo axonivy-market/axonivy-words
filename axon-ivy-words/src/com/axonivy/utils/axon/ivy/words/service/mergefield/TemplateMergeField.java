@@ -60,12 +60,13 @@ public class TemplateMergeField {
   public String toString() {
     return mergeFieldName + " = " + value;
   }
+
   /**
    * Get the merge field value.
-   * @return the mergeField Value as String. If the value is null, it returns an
-   *         empty String. In case of Date or Number type, it returns the
-   *         formatted String of the Date or Number. If the value is an object
-   *         it uses the object toString() method.
+   * 
+   * @return the mergeField Value as String. If the value is null, it returns an empty String. In case of Date or Number
+   *         type, it returns the formatted String of the Date or Number. If the value is an object it uses the object
+   *         toString() method.
    */
   public String getMergeFieldValue() {
     if (this.value == null) {

@@ -1,36 +1,42 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://xmlns.jcp.org/jsf/core"
-  xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-  xmlns:ic="http://ivyteam.ch/jsf/component" xmlns:p="http://primefaces.org/ui"
-  xmlns:pe="http://primefaces.org/ui/extensions">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:ic="http://ivyteam.ch/jsf/component"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
 
 <h:body>
-    <h1>Application</h1>
+	<h1>Application</h1>
 
-    <h:form id="applicationForm">
-        <h:panelGrid columns="2" cellpadding="5">
+	<h:form id="applicationForm">
+		<h:panelGrid columns="2" cellpadding="5">
 
-            <h:outputLabel for="name" value="Name:" />
-            <p:inputText id="name" value="#{data.candidate.name}" placeholder="Enter name" required="true"/>
+			<h:outputLabel for="name" value="Name:" />
+			<p:inputText id="name" value="#{data.candidate.name}"
+				placeholder="Enter name" required="true" />
 
-            <h:outputLabel for="age" value="Age:" />
-           <p:inputText id="age" value="#{data.candidate.age}" placeholder="Enter age"/>
+			<h:outputLabel for="age" value="Age:" />
+			<p:inputText id="age" value="#{data.candidate.age}"
+				placeholder="Enter age" />
 
-            <h:outputLabel for="position" value="Position:" />
-            <p:inputText id="position" value="#{data.candidate.position}" placeholder="Enter position"/>
+			<h:outputLabel for="position" value="Position:" />
+			<p:inputText id="position" value="#{data.candidate.position}"
+				placeholder="Enter position" />
 
-            <h:outputLabel for="school" value="School:" />
-            <p:inputText id="school" value="#{data.candidate.school}" placeholder="Enter school"/>
+			<h:outputLabel for="school" value="School:" />
+			<p:inputText id="school" value="#{data.candidate.school}"
+				placeholder="Enter school" />
 
-            <h:outputLabel for="house" value="House:" />
-            <p:inputText id="house" value="#{data.candidate.house}" placeholder="Enter house"/>
+			<h:outputLabel for="house" value="House:" />
+			<p:inputText id="house" value="#{data.candidate.house}"
+				placeholder="Enter house" />
 
-        </h:panelGrid>
+		</h:panelGrid>
 
-        <p:commandButton value="Submit"
-                         actionListener="#{logic.close}"
-                         update="@form"
-                         icon="pi pi-check"/>
-    </h:form>
+		<p:commandButton value="Submit" actionListener="#{logic.close}"
+			update="@form" icon="pi pi-check" />
+	</h:form>
 </h:body>
 
 </html>
