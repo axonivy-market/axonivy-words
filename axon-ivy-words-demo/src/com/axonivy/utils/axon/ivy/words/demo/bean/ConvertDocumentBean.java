@@ -27,7 +27,6 @@ public class ConvertDocumentBean implements Serializable {
           .stream(
               () -> new ByteArrayInputStream(WordFactory.convert().from(uploadedFile.getContent()).toPdf().asBytes()))
           .build());
-      ;
     }
   }
 

@@ -24,7 +24,7 @@ import ch.ivyteam.ivy.environment.IvyTest;
 @IvyTest
 class DocumentConverterTest {
   private final String TEST_FILE_PATH = "src_test/resources/demo.docx";
-  private final String TEST_OUTOUT_FILE_PATH = "src_test/resources/output.docx";
+  private final String TEST_OUTPUT_FILE_PATH = "src_test/resources/output.docx";
 
   @BeforeEach
   void resetLicenseField() throws Exception {
@@ -45,7 +45,7 @@ class DocumentConverterTest {
   @Test
   void testConvertFromFileToFormatAsFile() throws Exception {
     File inputFile = new File(TEST_FILE_PATH);
-    File result = WordFactory.convert().from(inputFile).to(SaveFormat.PDF).asFile(TEST_OUTOUT_FILE_PATH);
+    File result = WordFactory.convert().from(inputFile).to(SaveFormat.PDF).asFile(TEST_OUTPUT_FILE_PATH);
     assertNotNull(result);
   }
 
