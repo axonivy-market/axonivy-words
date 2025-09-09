@@ -2,7 +2,7 @@
   "$schema" : "https://json-schema.axonivy.com/process/12.0.0/process.json",
   "id" : "198D013F94BBADEA",
   "config" : {
-    "data" : "com.axonivy.utils.axon.ivy.word.demo.GenerateDocumentWithFilledPlaceholderData"
+    "data" : "com.axonivy.utils.axon.ivy.words.demo.GenerateDocumentWithFilledPlaceholderData"
   },
   "elements" : [ {
       "id" : "f0",
@@ -27,7 +27,7 @@
       "config" : {
         "output" : {
           "code" : [
-            "import com.axonivy.utils.word.demo.ExportFromCms;",
+            "import com.axonivy.utils.axon.ivy.words.demo.ExportFromCms;",
             "",
             "out.templateFile = ExportFromCms.export(\"/Templates/myTemplate\", \"doc\");"
           ]
@@ -47,7 +47,7 @@
         "from template"
       ],
       "config" : {
-        "processCall" : "generateFillingWordAndPdfFile:createDocFromTemplate(CompositeObject,String,String,String,List<com.axonivy.utils.word.service.mergefield.TemplateMergeField>)",
+        "processCall" : "GenerateFillingWordsFile:createDocFromTemplate(CompositeObject,String,String,String,List<com.axonivy.utils.axon.ivy.words.service.mergefield.TemplateMergeField>)",
         "call" : {
           "map" : {
             "param.data" : "in.candidate",
@@ -63,8 +63,9 @@
             "out.file" : "result.fileOperationMessage"
           },
           "code" : [
-            "import com.axonivy.utils.word.demo.util.DocumentUtils;",
-            "out.streamedContent = DocumentUtils.convertPdfFile(out.file.getPath());"
+            "import com.axonivy.utils.axon.ivy.words.demo.ConvertDocumentPdfFile;",
+            "out.streamedContent = ConvertDocumentPdfFile.convert(out.file.getAbsolutePath(), out.file.getName());",
+            "ivy.log.info(out.streamedContent.getContentType());"
           ]
         }
       },
@@ -79,7 +80,7 @@
       "type" : "DialogCall",
       "name" : "Preview and download Document",
       "config" : {
-        "dialog" : "com.axonivy.utils.axon.ivy.word.demo.PreviewDocument:start(String,org.primefaces.model.StreamedContent)",
+        "dialog" : "com.axonivy.utils.axon.ivy.words.demo.PreviewDocument:start(String,org.primefaces.model.StreamedContent)",
         "call" : {
           "map" : {
             "param.filePath" : "in.file.getPath()",
@@ -98,14 +99,14 @@
       "type" : "DialogCall",
       "name" : "Input an object",
       "config" : {
-        "dialog" : "com.axonivy.utils.axon.ivy.word.demo.FillingMergeFields:start()",
+        "dialog" : "com.axonivy.utils.axon.ivy.words.demo.FillingMergeFields:start()",
         "output" : {
           "map" : {
             "out" : "in",
             "out.candidate" : "result.candidate"
           },
           "code" : [
-            "import com.axonivy.utils.word.service.mergefield.TemplateMergeField;",
+            "import com.axonivy.utils.axon.ivy.words.service.mergefield.TemplateMergeField;",
             "in.mergeFields.add(new TemplateMergeField(\"age\", out.candidate.age));",
             "in.mergeFields.add(new TemplateMergeField(\"house\", out.candidate.house));",
             "in.mergeFields.add(new TemplateMergeField(\"name\", out.candidate.name));",

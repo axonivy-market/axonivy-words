@@ -1,0 +1,42 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/12.0.0/data-class.json",
+  "simpleName" : "GenerateFillingWordsFileData",
+  "namespace" : "com.axonivy.utils.axon.ivy.words",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "outputPath",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "serialLetterName",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "templatePath",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "tablesNamesList",
+    "type" : "List<String>",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "listOfRecordsets",
+    "type" : "List<ch.ivyteam.ivy.scripting.objects.Recordset>",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "fileOperationMessage",
+    "type" : "java.io.File",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "data",
+    "type" : "ch.ivyteam.ivy.scripting.objects.CompositeObject",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "mergeFieldsList",
+    "type" : "List<com.axonivy.utils.axon.ivy.words.service.mergefield.TemplateMergeField>"
+  }, {
+    "name" : "document",
+    "type" : "com.axonivy.utils.axon.ivy.words.service.BaseDocument",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}
