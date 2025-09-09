@@ -1,14 +1,10 @@
-<!--
-Dear developer !     
+# Axon Ivy Words
+*(ehemals Docfactory Doc)*
 
-When you create your very valuable documentation, please be aware that this  is not only published on github. With this file we provide a German translation of the description-tab, i.e. https://market.axonivy.com/adobe-acrobat-utils#tab-description. Please contact us if you need support with the German translation.
--->
+Axon Ivy Words ist ein kompaktes Hilfsprogramm, das Aufgaben rund um die Dokumentenverarbeitung in der Axon Ivy Plattform vereinfacht. Es basiert auf der integrierten Aspose.Words Java-Bibliothek und stellt sofort nutzbare Bausteine für typische Dokumentaufgaben bereit.
 
-# MEIN-PRODUKT-NAME
+Dieses Utility bietet:
 
-Bitte übersetze mindestens das "Description"-Chapter aus https://github.com/axonivy-market/market-product/blob/master/MY-PRODUCT-NAME-product/README.md. Es wird auf unserer Homepage angezeigt.
-Falls Du darüber hinaus auch die anderen Chapter übersetzt, werden auch diese auf der Homepage auf Deutsch angezeigt.
-
-<!--
-Die Erläuterungen unter „MEIN-PRODUKT-NAME“ werden z.B. für den  Adobe Konnektor hier angezeigt: https://market.axonivy.com/adobe-acrobat-utils#tab-description wenn ein Nutzer Deutsch als Anzeigesprache ausgewählt hat.
--->
+- Einfache Lizenzkonfiguration: Vereinfacht die Einrichtung der Aspose-Lizenz, sodass Du ohne administrativen Aufwand sofort mit der Entwicklung starten kannst.
+- Wiederverwendbare Komponenten: Stellt sofort nutzbare, ausführbare und konsumierbare Methoden für gängige Aufgaben bereit – für eine schnellere und konsistentere Entwicklung.
+- Minimaler Footprint: Entwickelt mit schlanker Architektur, wodurch Installation, Integration und Erweiterung ohne unnötige Komplexität möglich sind.
