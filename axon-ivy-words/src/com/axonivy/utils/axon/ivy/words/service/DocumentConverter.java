@@ -87,7 +87,7 @@ public class DocumentConverter {
    */
   public DocumentConverter from(byte[] bytes) {
     try {
-      this.document = new Document(new java.io.ByteArrayInputStream(bytes));
+      this.document = new Document(new ByteArrayInputStream(bytes));
       return this;
     } catch (Exception e) {
       Ivy.log().error("Failed to load document from byte array", e);
