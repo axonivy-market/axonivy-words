@@ -1,5 +1,6 @@
 package com.axonivy.utils.axon.ivy.words.service;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.InputStream;
@@ -17,7 +18,7 @@ import ch.ivyteam.ivy.environment.Ivy;
  */
 public class DocumentConverter {
   private Document document;
-  private int targetFormat;
+  private Integer targetFormat;
 
   /**
    * Creates a new DocumentConverter instance. Package-private constructor to
@@ -182,7 +183,7 @@ public class DocumentConverter {
    */
   public InputStream asInputStream() {
     byte[] bytes = asBytes();
-    return new java.io.ByteArrayInputStream(bytes);
+    return new ByteArrayInputStream(bytes);
   }
 
   /**
@@ -194,8 +195,8 @@ public class DocumentConverter {
     if (document == null) {
       throw new IllegalStateException("No source document set. Call from() method first.");
     }
-//    if (targetFormat == null) {
-//      throw new IllegalStateException("No target format set. Call to() or toPdf() method first.");
-//    }
+    if (targetFormat == null) {
+      throw new IllegalStateException("No target format set. Call to() or toPdf() method first.");
+    }
   }
 }

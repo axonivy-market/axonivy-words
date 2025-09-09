@@ -9,12 +9,9 @@ import ch.ivyteam.ivy.environment.Ivy;
 public final class WordFactory {
   private static License license;
 
-  // Private constructor to prevent instantiation
   private WordFactory() {
-    // Utility class
   }
 
-  // Static initializer to load license when class is first loaded
   static {
     loadLicense();
   }
@@ -65,7 +62,6 @@ public final class WordFactory {
    * @return a new DocumentConverter instance
    */
   public static DocumentConverter convert() {
-    // License is already loaded in static initializer
     return new DocumentConverter();
   }
 
