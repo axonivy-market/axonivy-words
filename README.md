@@ -2,6 +2,6 @@
 
 [![CI Build](https://github.com/axonivy-market/axon-ivy-words/actions/workflows/ci.yml/badge.svg)](https://github.com/axonivy-market/axon-ivy-words/actions/workflows/ci.yml)
 
-"YOUR SHORT DESCRIPTION GOES HERE"
+A lightweight utility that simplifies document processing tasks inside the Axon Ivy Platform.
 
 Read our [documentation](axon-ivy-words-product/README.md).

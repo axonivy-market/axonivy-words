@@ -22,9 +22,9 @@ public final class WordFactory {
   /**
    * Initializes the Aspose DocumentFactory license.
    * <p>
-   * Ensures the license is loaded once per request. If not already
-   * set, this method retrieves the license from {@link ThirdPartyLicenses} and
-   * applies it to the Aspose {@link License} instance.
+   * Ensures the license is loaded once per request. If not already set, this
+   * method retrieves the license from {@link ThirdPartyLicenses} and applies it
+   * to the Aspose {@link License} instance.
    * </p>
    *
    * <p>
@@ -52,6 +52,7 @@ public final class WordFactory {
    * Creates a new document converter for fluent API usage.
    * <p>
    * Usage examples:
+   * 
    * <pre>
    * // Convert to PDF as bytes
    * byte[] pdfBytes = WordFactory.convert().from(file).toPdf().asBytes();

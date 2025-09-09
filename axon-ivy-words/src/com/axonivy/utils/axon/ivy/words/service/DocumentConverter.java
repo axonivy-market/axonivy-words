@@ -12,16 +12,16 @@ import com.aspose.words.SaveOptions;
 import ch.ivyteam.ivy.environment.Ivy;
 
 /**
- * Fluent API for document conversion operations.
- * Provides a chain of methods to convert documents from one format to another.
+ * Fluent API for document conversion operations. Provides a chain of methods to
+ * convert documents from one format to another.
  */
 public class DocumentConverter {
   private Document document;
   private int targetFormat;
 
   /**
-   * Creates a new DocumentConverter instance.
-   * Package-private constructor to ensure creation only through WordFactory.
+   * Creates a new DocumentConverter instance. Package-private constructor to
+   * ensure creation only through WordFactory.
    */
   DocumentConverter() {
   }
@@ -151,7 +151,7 @@ public class DocumentConverter {
       if (parentDir != null && !parentDir.exists()) {
         parentDir.mkdirs();
       }
-      
+
       SaveOptions options = DocSaveOptions.createSaveOptions(targetFormat);
       document.save(outputPath, options);
       return outputFile;
@@ -164,7 +164,8 @@ public class DocumentConverter {
   /**
    * Converts the document and saves it as a file.
    * 
-   * @param outputFile the File object where the converted document should be saved
+   * @param outputFile the File object where the converted document should be
+   *                   saved
    * @return the File object representing the saved file
    * @throws DocumentConversionException if conversion or file saving fails
    */
@@ -173,8 +174,8 @@ public class DocumentConverter {
   }
 
   /**
-   * Converts the document and returns it as an InputStream.
-   * Note: The caller is responsible for closing the returned InputStream.
+   * Converts the document and returns it as an InputStream. Note: The caller is
+   * responsible for closing the returned InputStream.
    * 
    * @return an InputStream containing the converted document data
    * @throws DocumentConversionException if conversion fails
