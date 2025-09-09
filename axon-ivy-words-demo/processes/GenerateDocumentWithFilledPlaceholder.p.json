@@ -64,8 +64,8 @@
           },
           "code" : [
             "import com.axonivy.utils.axon.ivy.words.demo.ConvertDocumentPdfFile;",
-            "out.streamedContent = ConvertDocumentPdfFile.convert(out.file.getAbsolutePath(), out.file.getName());",
-            "ivy.log.info(out.streamedContent.getContentType());"
+            "",
+            "out.streamedContent = ConvertDocumentPdfFile.convert(out.file.getAbsolutePath(), out.file.getName());"
           ]
         }
       },
@@ -80,10 +80,9 @@
       "type" : "DialogCall",
       "name" : "Preview and download Document",
       "config" : {
-        "dialog" : "com.axonivy.utils.axon.ivy.words.demo.PreviewDocument:start(String,org.primefaces.model.StreamedContent)",
+        "dialog" : "com.axonivy.utils.axon.ivy.words.demo.PreviewDocument:start(org.primefaces.model.StreamedContent)",
         "call" : {
           "map" : {
-            "param.filePath" : "in.file.getPath()",
             "param.streamContent" : "in.streamedContent"
           }
         }

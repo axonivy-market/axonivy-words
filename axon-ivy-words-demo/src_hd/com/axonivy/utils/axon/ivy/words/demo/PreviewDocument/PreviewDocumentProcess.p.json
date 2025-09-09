@@ -8,16 +8,14 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "HtmlDialogStart",
-      "name" : "start(String,StreamedContent)",
+      "name" : "start(StreamedContent)",
       "config" : {
         "signature" : "start",
         "input" : {
           "params" : [
-            { "name" : "filePath", "type" : "String", "desc" : "" },
             { "name" : "streamContent", "type" : "org.primefaces.model.StreamedContent", "desc" : "" }
           ],
           "map" : {
-            "out.filePath" : "param.filePath",
             "out.streamedContent" : "param.streamContent"
           }
         },

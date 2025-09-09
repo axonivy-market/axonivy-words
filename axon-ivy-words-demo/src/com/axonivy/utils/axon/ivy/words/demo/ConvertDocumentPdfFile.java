@@ -24,7 +24,9 @@ public class ConvertDocumentPdfFile {
         }
 
         byte[] fileContent = Files.readAllBytes(file.toPath());
-        return DefaultStreamedContent.builder().name(fileName)
+        String pdfFileName = fileName.replaceAll("\\.docx$", "") + ".pdf";
+
+        return DefaultStreamedContent.builder().name(pdfFileName )
 				.contentType(DocumentConstants.PDF_CONTENT_TYPE)
 				.stream(() -> new ByteArrayInputStream(WordFactory.convert()
 		                .from(fileContent)

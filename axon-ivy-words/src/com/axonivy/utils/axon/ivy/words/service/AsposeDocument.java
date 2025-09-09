@@ -74,7 +74,6 @@ public class AsposeDocument extends BaseDocument {
             }
 
             String outputFilePath = outPath + outName + ".docx";
-            Ivy.log().info("output file generate:"+outputFilePath);
             File outFile = new File(outputFilePath);
             doc.save(outputFilePath, SaveFormat.DOCX);
 
@@ -88,10 +87,10 @@ public class AsposeDocument extends BaseDocument {
     @Override
     public boolean isFormatSupported(String format) {
         return StringUtils.isNotBlank(format) &&
-               (format.equalsIgnoreCase("docx") || format.equalsIgnoreCase(".docx"));
+               (format.equalsIgnoreCase("docx") || format.equalsIgnoreCase(".doc"));
     }
 
     public static String[] getSupportedFormats() {
-        return new String[] {"docx"};
+        return new String[] {"docx","doc"};
     }
 }

@@ -4,10 +4,6 @@
   "namespace" : "com.axonivy.utils.axon.ivy.words.demo.PreviewDocument",
   "isBusinessCaseData" : false,
   "fields" : [ {
-    "name" : "filePath",
-    "type" : "String",
-    "modifiers" : [ "PERSISTENT" ]
-  }, {
     "name" : "streamedContent",
     "type" : "org.primefaces.model.StreamedContent",
     "modifiers" : [ "PERSISTENT" ]
