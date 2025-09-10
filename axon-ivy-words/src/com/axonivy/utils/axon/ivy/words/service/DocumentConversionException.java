@@ -1,14 +1,15 @@
 package com.axonivy.utils.axon.ivy.words.service;
 
 /**
- * Exception thrown when document conversion operations fail. This is a runtime exception that wraps underlying
- * conversion errors.
+ * Exception thrown when document conversion operations fail. This is a runtime
+ * exception that wraps underlying conversion errors.
  */
 public class DocumentConversionException extends RuntimeException {
   private static final long serialVersionUID = 1L;
 
   /**
-   * Constructs a new DocumentConversionException with the specified detail message.
+   * Constructs a new DocumentConversionException with the specified detail
+   * message.
    * 
    * @param message the detail message
    */
@@ -17,10 +18,11 @@ public class DocumentConversionException extends RuntimeException {
   }
 
   /**
-   * Constructs a new DocumentConversionException with the specified detail message and cause.
+   * Constructs a new DocumentConversionException with the specified detail
+   * message and cause.
    * 
    * @param message the detail message
-   * @param cause the cause
+   * @param cause   the cause
    */
   public DocumentConversionException(String message, Throwable cause) {
     super(message, cause);

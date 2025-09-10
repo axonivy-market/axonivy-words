@@ -13,17 +13,19 @@ import com.aspose.words.SaveOptions;
 import ch.ivyteam.ivy.environment.Ivy;
 
 /**
- * Fluent API for document conversion operations. Provides a chain of methods to convert documents from one format to
- * another.
+ * Fluent API for document conversion operations. Provides a chain of methods to
+ * convert documents from one format to another.
  */
 public class DocumentConverter {
   private Document document;
   private Integer targetFormat;
 
   /**
-   * Creates a new DocumentConverter instance. Package-private constructor to ensure creation only through WordFactory.
+   * Creates a new DocumentConverter instance. Package-private constructor to
+   * ensure creation only through WordFactory.
    */
-  DocumentConverter() {}
+  DocumentConverter() {
+  }
 
   /**
    * Sets the source document from an InputStream.
@@ -85,7 +87,7 @@ public class DocumentConverter {
    */
   public DocumentConverter from(byte[] bytes) {
     try {
-      this.document = new Document(new java.io.ByteArrayInputStream(bytes));
+      this.document = new Document(new ByteArrayInputStream(bytes));
       return this;
     } catch (Exception e) {
       Ivy.log().error("Failed to load document from byte array", e);
@@ -163,7 +165,8 @@ public class DocumentConverter {
   /**
    * Converts the document and saves it as a file.
    * 
-   * @param outputFile the File object where the converted document should be saved
+   * @param outputFile the File object where the converted document should be
+   *                   saved
    * @return the File object representing the saved file
    * @throws DocumentConversionException if conversion or file saving fails
    */
@@ -172,8 +175,8 @@ public class DocumentConverter {
   }
 
   /**
-   * Converts the document and returns it as an InputStream. Note: The caller is responsible for closing the returned
-   * InputStream.
+   * Converts the document and returns it as an InputStream. Note: The caller is
+   * responsible for closing the returned InputStream.
    * 
    * @return an InputStream containing the converted document data
    * @throws DocumentConversionException if conversion fails
