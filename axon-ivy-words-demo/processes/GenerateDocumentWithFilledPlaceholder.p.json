@@ -9,7 +9,7 @@
       "type" : "RequestStart",
       "name" : "Document With Filled Placeholder",
       "config" : {
-        "signature" : "start"
+        "signature" : "createDocFromTemplate"
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 120 }
@@ -51,9 +51,9 @@
         "call" : {
           "map" : {
             "param.data" : "in.candidate",
-            "param.optionalOutputpath" : "new File(\"ivy_DocumentDemo\").getAbsolutePath()",
+            "param.optionalOutputpath" : "new File(\"Document\").getAbsolutePath()",
             "param.templatePath" : "in.templateFile.getAbsolutePath()",
-            "param.optionalLetterName" : "\"DocumentFromTemplate\"",
+            "param.optionalLetterName" : "\"FromTemplate\"",
             "param.mergeFields" : "in.mergeFields"
           }
         },
