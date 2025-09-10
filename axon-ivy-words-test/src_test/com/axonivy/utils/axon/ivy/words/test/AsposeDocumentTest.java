@@ -21,7 +21,7 @@ public class AsposeDocumentTest {
   private static final String TEST_TEMPLATE_PATH = "test-template.docx";
   private static final String TEST_OUTPUT_DIR = "test-output/";
 
-  private AsposeDocument asposeDocument = new AsposeDocument();
+  private final AsposeDocument asposeDocument = new AsposeDocument();
 
   @AfterEach
   public void cleanup() {
@@ -52,6 +52,7 @@ public class AsposeDocumentTest {
 
   @Test
   void generateDocumentWithRegions_shouldCreateFile_whenTemplateExists() throws Exception {
+    // fake template file
     File fakeTemplate = new File(TEST_TEMPLATE_PATH);
     try (FileWriter writer = new FileWriter(fakeTemplate)) {
       writer.write("Fake Word Content");
@@ -60,8 +61,13 @@ public class AsposeDocumentTest {
     List<TemplateMergeField> mergeFields = new ArrayList<>();
     mergeFields.add(new TemplateMergeField("name", "John Doe"));
 
-    File result = asposeDocument.generateDocumentWithRegions(TEST_TEMPLATE_PATH, "test-generated", TEST_OUTPUT_DIR,
-        mergeFields, new Hashtable<String, Recordset>());
+    File result = asposeDocument.generateDocumentWithRegions(
+        TEST_TEMPLATE_PATH,
+        "test-generated",
+        TEST_OUTPUT_DIR,
+        mergeFields,
+        new Hashtable<String, Recordset>()
+    );
 
     assertThat(result).isNotNull();
     assertThat(result.getName()).isEqualTo("test-generated.docx");
@@ -69,21 +75,24 @@ public class AsposeDocumentTest {
   }
 
   @Test
-  void isFormatSupported_shouldReturnTrueForDocx() {
+  void isFormatSupported_shouldReturnTrueForDocAndDocx() {
     assertThat(asposeDocument.isFormatSupported("docx")).isTrue();
-    assertThat(asposeDocument.isFormatSupported(".docx")).isTrue();
+    assertThat(asposeDocument.isFormatSupported("doc")).isTrue();
+    assertThat(asposeDocument.isFormatSupported("DOC")).isTrue();
+    assertThat(asposeDocument.isFormatSupported("DOCX")).isTrue();
   }
 
   @Test
-  void isFormatSupported_shouldReturnFalseForOtherFormats() {
+  void isFormatSupported_shouldReturnFalseForUnsupportedFormats() {
     assertThat(asposeDocument.isFormatSupported("pdf")).isFalse();
+    assertThat(asposeDocument.isFormatSupported("txt")).isFalse();
     assertThat(asposeDocument.isFormatSupported("")).isFalse();
     assertThat(asposeDocument.isFormatSupported(null)).isFalse();
   }
 
   @Test
-  void getSupportedFormats_shouldContainDocx() {
+  void getSupportedFormats_shouldContainDocAndDocx() {
     String[] formats = AsposeDocument.getSupportedFormats();
-    assertThat(formats).containsExactly("docx");
+    assertThat(formats).containsExactly("docx", "doc");
   }
 }

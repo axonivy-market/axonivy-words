@@ -35,7 +35,9 @@
 		</h:panelGrid>
 
 		<p:commandButton value="Submit" actionListener="#{logic.close}"
-			update="@form" icon="pi pi-check" />
+			update="@form" icon="pi pi-check" styleClass="ui-button-success"
+			onclick="this.disabled=true;" />
+
 	</h:form>
 </h:body>
 
