@@ -24,7 +24,7 @@
     "type" : "List<ch.ivyteam.ivy.scripting.objects.Recordset>",
     "modifiers" : [ "PERSISTENT" ]
   }, {
-    "name" : "fileOperationMessage",
+    "name" : "file",
     "type" : "java.io.File",
     "modifiers" : [ "PERSISTENT" ]
   }, {

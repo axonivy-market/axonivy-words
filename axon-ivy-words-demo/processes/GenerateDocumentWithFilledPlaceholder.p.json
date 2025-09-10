@@ -60,7 +60,7 @@
         "output" : {
           "map" : {
             "out" : "in",
-            "out.file" : "result.fileOperationMessage"
+            "out.file" : "result.file"
           },
           "code" : [
             "import com.axonivy.utils.axon.ivy.words.demo.ConvertDocumentPdfFile;",

@@ -29,15 +29,15 @@
         },
         "result" : {
           "params" : [
-            { "name" : "fileOperationMessage", "type" : "java.io.File", "desc" : "" }
+            { "name" : "file", "type" : "java.io.File", "desc" : "" }
           ],
           "map" : {
-            "result.fileOperationMessage" : "in.fileOperationMessage"
+            "result.file" : "in.file"
           }
         }
       },
       "visual" : {
-        "at" : { "x" : 544, "y" : 248 }
+        "at" : { "x" : 544, "y" : 328 }
       },
       "connect" : [
         { "id" : "f10", "to" : "f4" }
@@ -59,7 +59,7 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 544, "y" : 384 }
+        "at" : { "x" : 544, "y" : 424 }
       },
       "connect" : [
         { "id" : "f9", "to" : "f5" }
@@ -117,8 +117,7 @@
             "  }",
             "}",
             "try{",
-            "  out.fileOperationMessage = ",
-            "  in.document.generateDocumentWithRegions(in.templatePath, in.serialLetterName, in.outputPath, in.mergeFieldsList, htable);",
+            "  out.file = in.document.generateDocumentWithRegions(in.templatePath, in.serialLetterName, in.outputPath, in.mergeFieldsList, htable);",
             "}catch (Throwable t){",
             "  ivy.log.error(t.getMessage(),t);",
             "}"
@@ -135,7 +134,7 @@
       "id" : "f6",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 544, "y" : 784 },
+        "at" : { "x" : 544, "y" : 696 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     } ]
