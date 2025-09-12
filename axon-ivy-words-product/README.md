@@ -58,9 +58,7 @@ A callable process is available to ease the use of the document. This is availab
 
 The Callable named generateFillingWordsFiles contains callable createDocFromTemplate subprocess starts. Which is responsible for the document generation. It uses the DocumentTemplate and TemplateMergeField classes to perform a mail merge operation.
 
-## Best Practices
-
-### Mail Merge with Images
+## Best Practices: Mail Merge with Images
 
 For inserting images into mail merge templates, we recommend using the [Aspose DocumentBuilder](https://docs.aspose.com/words/java/insert-picture-in-document/). This approach programmatically retrieves and embeds images, offering a more stable and maintainable solution than relying on the INCLUDEPICTURE field.
 
