@@ -1,0 +1,169 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
+  "id" : "198D013F94BBADEA",
+  "config" : {
+    "data" : "com.axonivy.utils.axon.ivy.words.demo.GenerateDocumentWithFilledPlaceholderData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "Document With Filled Placeholder",
+      "config" : {
+        "signature" : "createDocFromTemplate",
+        "request" : {
+          "name" : "Generate Document"
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f13" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : [
+        "Get Template from",
+        "CMS"
+      ],
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.utils.axon.ivy.words.demo.ExportFromCms;",
+            "",
+            "out.templateFile = ExportFromCms.export(\"/Templates/myTemplate\", \"doc\");"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 464, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f6", "to" : "f7", "color" : "default" }
+      ]
+    }, {
+      "id" : "f7",
+      "type" : "SubProcessCall",
+      "name" : [
+        "Create Document",
+        "from template"
+      ],
+      "config" : {
+        "processCall" : "GenerateFillingWordsFile:createDocFromTemplate(CompositeObject,String,String,String,List<com.axonivy.utils.axon.ivy.words.service.mergefield.TemplateMergeField>)",
+        "call" : {
+          "map" : {
+            "param.data" : "in.candidate",
+            "param.optionalOutputpath" : "new File(\"Document\").getAbsolutePath()",
+            "param.templatePath" : "in.templateFile.getAbsolutePath()",
+            "param.optionalLetterName" : "\"FromTemplate\"",
+            "param.mergeFields" : "in.mergeFields"
+          }
+        },
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.file" : "result.file"
+          },
+          "code" : [
+            "import com.axonivy.utils.axon.ivy.words.demo.ConvertDocumentPdfFile;",
+            "",
+            "out.streamedContent = ConvertDocumentPdfFile.convert(out.file.getAbsolutePath(), out.file.getName());"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 648, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f1", "to" : "f8" }
+      ]
+    }, {
+      "id" : "f8",
+      "type" : "DialogCall",
+      "name" : "Preview and download Document",
+      "config" : {
+        "dialog" : "com.axonivy.utils.axon.ivy.words.demo.PreviewDocument:start(org.primefaces.model.StreamedContent)",
+        "call" : {
+          "map" : {
+            "param.streamContent" : "in.streamedContent"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 824, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f15", "to" : "f14" }
+      ]
+    }, {
+      "id" : "f13",
+      "type" : "DialogCall",
+      "name" : "Input an object",
+      "config" : {
+        "dialog" : "com.axonivy.utils.axon.ivy.words.demo.FillingMergeFields:start()",
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.candidate" : "result.candidate"
+          },
+          "code" : [
+            "import com.axonivy.utils.axon.ivy.words.service.mergefield.TemplateMergeField;",
+            "in.mergeFields.add(new TemplateMergeField(\"age\", out.candidate.age));",
+            "in.mergeFields.add(new TemplateMergeField(\"house\", out.candidate.house));",
+            "in.mergeFields.add(new TemplateMergeField(\"name\", out.candidate.name));",
+            "in.mergeFields.add(new TemplateMergeField(\"position\", out.candidate.position));",
+            "in.mergeFields.add(new TemplateMergeField(\"school\", out.candidate.school));"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 288, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f4", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f3",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 1048, "y" : 120 }
+      }
+    }, {
+      "id" : "f14",
+      "type" : "Alternative",
+      "config" : {
+        "conditions" : {
+          "f16" : "in.back == \"false\""
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 952, "y" : 120 }
+      },
+      "connect" : [
+        { "id" : "f16", "to" : "f3" },
+        { "id" : "f17", "to" : "f18", "via" : [ { "x" : 952, "y" : 64 } ] }
+      ]
+    }, {
+      "id" : "f18",
+      "type" : "TaskSwitchEvent",
+      "config" : {
+        "task" : {
+          "name" : "Create Document",
+          "skipTasklist" : true
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 616, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f19", "to" : "f13", "via" : [ { "x" : 288, "y" : 64 } ], "color" : "default" }
+      ]
+    } ],
+  "layout" : {
+    "lanes" : [ {
+        "offset" : 32,
+        "size" : 192
+      } ]
+  }
+}

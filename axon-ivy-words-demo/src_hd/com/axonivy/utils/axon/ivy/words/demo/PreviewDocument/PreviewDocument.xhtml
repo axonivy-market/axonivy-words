@@ -7,24 +7,23 @@
 	xmlns:pe="http://primefaces.org/ui/extensions">
 <h:body>
 	<ui:composition template="/layouts/frame-10.xhtml">
-		<ui:define name="title">Convert Document</ui:define>
+		<ui:define name="title">PreviewDocument</ui:define>
 		<ui:define name="content">
-			<h3>Axon Ivy Words Demo: Upload .doc(x) file and convert it to PDF</h3>
-			<br />
-
+			<h1 class="mb-5 text-center">Preview Document</h1>
 			<h:form id="form" enctype="multipart/form-data">
-				<p:fileUpload value="#{convertDocumentBean.uploadedFile}"
-					skinSimple="true" mode="simple" allowTypes="/(\.|\/)(doc|docx)$/"
-					label="Choose .doc/.docx" />
-				<br />
-				<br />
-				<p:commandButton value="Convert and Download"
-					actionListener="#{convertDocumentBean.convert}" ajax="false"
+
+				<p:media id="media-content" value="#{data.streamedContent}"
+					width="100%" height="620" cache="false" player="pdf" />
+				<p:commandButton value="Create another Document"
+					actionListener="#{logic.back}" update="@form" icon="pi pi-check"
+					styleClass="ui-button-back" process="@form" ajax="true" />
+				<p:commandButton value="Convert and Download" ajax="false"
 					icon="pi pi-download">
-					<p:fileDownload value="#{convertDocumentBean.convertedFile}" />
+					<p:fileDownload value="#{data.streamedContent}" />
 				</p:commandButton>
 			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
+
 </html>

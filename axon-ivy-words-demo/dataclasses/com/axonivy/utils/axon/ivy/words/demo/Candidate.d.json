@@ -1,0 +1,27 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/13.1.2/data-class.json",
+  "simpleName" : "Candidate",
+  "namespace" : "com.axonivy.utils.axon.ivy.words.demo",
+  "isBusinessCaseData" : false,
+  "fields" : [ {
+    "name" : "name",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "age",
+    "type" : "java.lang.Integer",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "position",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "school",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  }, {
+    "name" : "house",
+    "type" : "String",
+    "modifiers" : [ "PERSISTENT" ]
+  } ]
+}

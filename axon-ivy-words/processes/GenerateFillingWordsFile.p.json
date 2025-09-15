@@ -1,0 +1,141 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
+  "id" : "1992D3D14A3408D0",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.utils.axon.ivy.words.GenerateFillingWordsFileData"
+  },
+  "elements" : [ {
+      "id" : "f3",
+      "type" : "CallSubStart",
+      "name" : "createDocFromTemplate",
+      "config" : {
+        "signature" : "createDocFromTemplate",
+        "input" : {
+          "params" : [
+            { "name" : "data", "type" : "CompositeObject", "desc" : "" },
+            { "name" : "optionalOutputpath", "type" : "String", "desc" : "" },
+            { "name" : "templatePath", "type" : "String", "desc" : "" },
+            { "name" : "optionalLetterName", "type" : "String", "desc" : "" },
+            { "name" : "mergeFields", "type" : "List<com.axonivy.utils.axon.ivy.words.service.mergefield.TemplateMergeField>", "desc" : "" }
+          ],
+          "map" : {
+            "out.data" : "param.data",
+            "out.mergeFieldsList" : "param.mergeFields",
+            "out.outputPath" : "param.optionalOutputpath",
+            "out.serialLetterName" : "param.optionalLetterName",
+            "out.templatePath" : "param.templatePath"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "file", "type" : "java.io.File", "desc" : "" }
+          ],
+          "map" : {
+            "result.file" : "in.file"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 528, "y" : 352 }
+      },
+      "connect" : [
+        { "id" : "f10", "to" : "f4" }
+      ]
+    }, {
+      "id" : "f4",
+      "type" : "Script",
+      "name" : [
+        "make the document",
+        "Object"
+      ],
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.utils.axon.ivy.words.service.BaseDocument;",
+            "",
+            "in.document = BaseDocument.getInstance();"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 688, "y" : 352 }
+      },
+      "connect" : [
+        { "id" : "f9", "to" : "f5" }
+      ]
+    }, {
+      "id" : "f5",
+      "type" : "Script",
+      "name" : [
+        "Check the outputFormat / ",
+        "outputPath / outputLetterName"
+      ],
+      "config" : {
+        "output" : {
+          "code" : [
+            "import com.axonivy.utils.axon.ivy.words.service.FileUtil;",
+            "//if desired letter name not valid, we take the name \"letter_nanoTime()\"",
+            "if(in.#serialLetterName == null || in.serialLetterName.trim().equalsIgnoreCase(\"\")",
+            "  || !FileUtil.isFileNameValid(in.serialLetterName)){",
+            "    out.serialLetterName = \"letter_\"+System.nanoTime();",
+            "}",
+            "",
+            "//if desired outputPath is not valid, we take \"ivy_RIA_Files\"",
+            "if(in.outputPath==null || in.outputPath.trim().equalsIgnoreCase(\"\")){",
+            "  out.outputPath=\"ivy_RIA_files\";",
+            "}"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 864, "y" : 352 }
+      },
+      "connect" : [
+        { "id" : "f11", "to" : "f7", "color" : "default" }
+      ]
+    }, {
+      "id" : "f7",
+      "type" : "Script",
+      "name" : [
+        "make the hash table for the merge mail with regions",
+        "and write the serialLetter"
+      ],
+      "config" : {
+        "output" : {
+          "code" : [
+            "import java.util.Hashtable;",
+            "Hashtable htable = new Hashtable();",
+            "",
+            "if(in.tablesNamesList.size()>0 && ",
+            "  in.ListOfRecordsets.size()==in.tablesNamesList.size()){",
+            "  int i=0;",
+            "  for(String s : in.tablesNamesList)",
+            "  {",
+            "    htable.put(s,in.ListOfRecordsets.get(i));",
+            "    i++;",
+            "  }",
+            "}",
+            "try{",
+            "  out.file = in.document.generateDocumentWithRegions(in.templatePath, in.serialLetterName, in.outputPath, in.mergeFieldsList, htable);",
+            "}catch (Throwable t){",
+            "  ivy.log.error(t.getMessage(),t);",
+            "}"
+          ]
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 1032, "y" : 352 }
+      },
+      "connect" : [
+        { "id" : "f8", "to" : "f6", "color" : "default" }
+      ]
+    }, {
+      "id" : "f6",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 1224, "y" : 352 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    } ]
+}

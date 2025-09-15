@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<h:body>
+	<ui:composition template="/layouts/frame-10.xhtml">
+		<ui:define name="title">Application</ui:define>
+
+		<ui:define name="content">
+
+			<h3>Application Form: Enter candidate information</h3>
+			<br />
+
+			<h:form id="applicationForm">
+
+				<p:panelGrid columns="4" cellpadding="8" style="width:100%"
+					columnClasses="label,value,label,value">
+
+					<h:outputLabel for="name" value="Name *" />
+					<h:panelGroup>
+						<p:inputText id="name" value="#{data.candidate.name}"
+							required="true" requiredMessage="Name is required"
+							placeholder="Enter name" />
+						<p:messages for="name" />
+					</h:panelGroup>
+
+
+					<h:outputLabel for="age" value="Age *" />
+					<h:panelGroup>
+						<p:inputNumber id="age" value="#{data.candidate.age}"
+							required="true" requiredMessage="Age is required"
+							placeholder="Enter age" decimalPlaces="0" />
+						<p:messages for="age" />
+					</h:panelGroup>
+
+
+					<h:outputLabel for="position" value="Position *" />
+					<h:panelGroup>
+						<p:inputText id="position" value="#{data.candidate.position}"
+							required="true" requiredMessage="Position is required"
+							placeholder="Enter position" />
+						<p:messages for="position" />
+					</h:panelGroup>
+
+
+					<h:outputLabel for="school" value="School *" />
+					<h:panelGroup>
+						<p:inputText id="school" value="#{data.candidate.school}"
+							required="true" requiredMessage="School is required"
+							placeholder="Enter school" />
+						<p:messages for="school" />
+					</h:panelGroup>
+
+
+					<h:outputLabel for="house" value="House *" />
+					<h:panelGroup>
+						<p:inputText id="house" value="#{data.candidate.house}"
+							required="true" requiredMessage="House is required"
+							placeholder="Enter house" />
+						<p:messages for="house" />
+					</h:panelGroup>
+
+
+				</p:panelGrid>
+				<h:panelGroup layout="block"
+					style="display:flex; justify-content:flex-end;">
+					<p:commandButton value="Create" actionListener="#{logic.close}"
+						update="@form" icon="pi pi-check" styleClass="ui-button-submit"
+						process="@form" ajax="true" />
+				</h:panelGroup>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
