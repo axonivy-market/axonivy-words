@@ -16,48 +16,57 @@
 
 			<h:form id="applicationForm">
 
-				<p:messages id="messages" />
-
-				<h:panelGrid columns="4" cellpadding="8" style="width:100%"
+				<p:panelGrid columns="4" cellpadding="8" style="width:100%"
 					columnClasses="label,value,label,value">
 
 					<h:outputLabel for="name" value="Name *" />
-					<p:inputText id="name" value="#{data.candidate.name}"
-						required="true" requiredMessage="Name is required"
-						placeholder="Enter name" />
+					<h:panelGroup>
+						<p:inputText id="name" value="#{data.candidate.name}"
+							required="true" requiredMessage="Name is required"
+							placeholder="Enter name" />
+						<p:messages for="name" />
+					</h:panelGroup>
+
 
 					<h:outputLabel for="age" value="Age *" />
-					<p:inputText id="age" value="#{data.candidate.age}" required="true"
-						requiredMessage="Age is required" placeholder="Enter age">
-						<f:validator validatorId="ageValidator" />
-					</p:inputText>
+					<h:panelGroup>
+						<p:inputNumber id="age" value="#{data.candidate.age}"
+							required="true" requiredMessage="Age is required"
+							placeholder="Enter age" decimalPlaces="0" />
+						<p:messages for="age" />
+					</h:panelGroup>
 
 
 					<h:outputLabel for="position" value="Position *" />
-					<p:inputText id="position" value="#{data.candidate.position}"
-						required="true" requiredMessage="Position is required"
-						placeholder="Enter position" />
+					<h:panelGroup>
+						<p:inputText id="position" value="#{data.candidate.position}"
+							required="true" requiredMessage="Position is required"
+							placeholder="Enter position" />
+						<p:messages for="position" />
+					</h:panelGroup>
+
 
 					<h:outputLabel for="school" value="School *" />
-					<p:inputText id="school" value="#{data.candidate.school}"
-						required="true" requiredMessage="School is required"
-						placeholder="Enter school" />
+					<h:panelGroup>
+						<p:inputText id="school" value="#{data.candidate.school}"
+							required="true" requiredMessage="School is required"
+							placeholder="Enter school" />
+						<p:messages for="school" />
+					</h:panelGroup>
+
 
 					<h:outputLabel for="house" value="House *" />
-					<p:inputText id="house" value="#{data.candidate.house}"
-						required="true" requiredMessage="House is required"
-						placeholder="Enter house" />
+					<h:panelGroup>
+						<p:inputText id="house" value="#{data.candidate.house}"
+							required="true" requiredMessage="House is required"
+							placeholder="Enter house" />
+						<p:messages for="house" />
+					</h:panelGroup>
 
-				</h:panelGrid>
 
-				<br />
-
+				</p:panelGrid>
 				<h:panelGroup layout="block"
-					style="margin-top:15px; text-align:right;">
-					<p:commandButton value="Close" styleClass="ui-button-secondary"
-						icon="pi pi-times" immediate="true"
-						onclick="PF('applicationDialog').hide(); return false;" />
-
+					style="display:flex; justify-content:flex-end;">
 					<p:commandButton value="Create" actionListener="#{logic.close}"
 						update="@form" icon="pi pi-check" styleClass="ui-button-submit"
 						process="@form" ajax="true" />

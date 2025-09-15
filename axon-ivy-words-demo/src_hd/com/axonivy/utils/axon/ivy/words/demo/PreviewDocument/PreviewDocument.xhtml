@@ -14,7 +14,9 @@
 
 				<p:media id="media-content" value="#{data.streamedContent}"
 					width="100%" height="620" cache="false" player="pdf" />
-
+				<p:commandButton value="Create another Document"
+					actionListener="#{logic.back}" update="@form" icon="pi pi-check"
+					styleClass="ui-button-back" process="@form" ajax="true" />
 				<p:commandButton value="Convert and Download" ajax="false"
 					icon="pi pi-download">
 					<p:fileDownload value="#{data.streamedContent}" />
