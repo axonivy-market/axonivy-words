@@ -1,4 +1,4 @@
-# Axon Ivy Word
+# Axon Ivy Words
 
 [![CI Build](https://github.com/axonivy-market/axonivy-words/actions/workflows/ci.yml/badge.svg)](https://github.com/axonivy-market/axonivy-words/actions/workflows/ci.yml)
 
