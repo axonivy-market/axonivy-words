@@ -15,9 +15,9 @@ import org.mockito.Mockito;
 
 import com.aspose.words.Document;
 import com.aspose.words.SaveFormat;
-import com.axonivy.utils.axonivywords.service.DocumentConversionException;
 import com.axonivy.utils.axonivywords.service.DocumentConverter;
 import com.axonivy.utils.axonivywords.service.WordFactory;
+import com.axonivy.utils.docs.common.DocumentConversionException;
 
 import ch.ivyteam.ivy.environment.IvyTest;
 

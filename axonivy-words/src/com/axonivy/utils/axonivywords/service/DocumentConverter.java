@@ -1,202 +1,87 @@
 package com.axonivy.utils.axonivywords.service;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.InputStream;
 
 import com.aspose.words.DocSaveOptions;
 import com.aspose.words.Document;
 import com.aspose.words.SaveFormat;
 import com.aspose.words.SaveOptions;
-
-import ch.ivyteam.ivy.environment.Ivy;
+import com.axonivy.utils.docs.common.AbstractConverter;
 
 /**
- * Fluent API for document conversion operations. Provides a chain of methods to
- * convert documents from one format to another.
+ * Document converter implementation for Word documents using Aspose.Words.
+ * Extends AbstractConverter to provide Word-specific document conversion functionality.
  */
-public class DocumentConverter {
-  private Document document;
-  private Integer targetFormat;
+public class DocumentConverter extends AbstractConverter<DocumentConverter, Document> {
 
   /**
    * Creates a new DocumentConverter instance. Package-private constructor to
    * ensure creation only through WordFactory.
    */
   DocumentConverter() {
+    super();
   }
 
   /**
-   * Sets the source document from an InputStream.
+   * Loads a document from an InputStream.
    * 
-   * @param inputStream the input stream containing the document data
-   * @return this converter instance for method chaining
-   * @throws DocumentConversionException if document loading fails
+   * @param inputStream the input stream to load from
+   * @return the loaded Document
+   * @throws Exception if loading fails
    */
-  public DocumentConverter from(InputStream inputStream) {
-    try {
-      this.document = new Document(inputStream);
-      return this;
-    } catch (Exception e) {
-      Ivy.log().error("Failed to load document from InputStream", e);
-      throw new DocumentConversionException("Failed to load document", e);
-    }
+  @Override
+  protected Document loadFromInputStream(InputStream inputStream) throws Exception {
+    return new Document(inputStream);
   }
 
   /**
-   * Sets the source document from a File.
+   * Loads a document from a file path.
    * 
-   * @param file the file containing the document
-   * @return this converter instance for method chaining
-   * @throws DocumentConversionException if document loading fails
+   * @param filePath the file path to load from
+   * @return the loaded Document
+   * @throws Exception if loading fails
    */
-  public DocumentConverter from(File file) {
-    try {
-      this.document = new Document(file.getAbsolutePath());
-      return this;
-    } catch (Exception e) {
-      Ivy.log().error("Failed to load document from file: " + file.getAbsolutePath(), e);
-      throw new DocumentConversionException("Failed to load document from file", e);
-    }
+  @Override
+  protected Document loadFromFile(String filePath) throws Exception {
+    return new Document(filePath);
   }
 
   /**
-   * Sets the source document from a file path.
+   * Saves the document to an OutputStream.
    * 
-   * @param filePath the path to the file containing the document
-   * @return this converter instance for method chaining
-   * @throws DocumentConversionException if document loading fails
+   * @param document the document to save
+   * @param outputStream the output stream to save to
+   * @param format the format to save in
+   * @throws Exception if saving fails
    */
-  public DocumentConverter from(String filePath) {
-    try {
-      this.document = new Document(filePath);
-      return this;
-    } catch (Exception e) {
-      Ivy.log().error("Failed to load document from path: " + filePath, e);
-      throw new DocumentConversionException("Failed to load document from path", e);
-    }
+  @Override
+  protected void saveToStream(Document document, ByteArrayOutputStream outputStream, int format) throws Exception {
+    SaveOptions options = DocSaveOptions.createSaveOptions(format);
+    document.save(outputStream, options);
   }
 
   /**
-   * Sets the source document from a byte array.
+   * Saves the document to a file.
    * 
-   * @param bytes the byte array containing the document data
-   * @return this converter instance for method chaining
-   * @throws DocumentConversionException if document loading fails
+   * @param document the document to save
+   * @param outputPath the file path to save to
+   * @param format the format to save in
+   * @throws Exception if saving fails
    */
-  public DocumentConverter from(byte[] bytes) {
-    try {
-      this.document = new Document(new ByteArrayInputStream(bytes));
-      return this;
-    } catch (Exception e) {
-      Ivy.log().error("Failed to load document from byte array", e);
-      throw new DocumentConversionException("Failed to load document from byte array", e);
-    }
+  @Override
+  protected void saveToFile(Document document, String outputPath, int format) throws Exception {
+    SaveOptions options = DocSaveOptions.createSaveOptions(format);
+    document.save(outputPath, options);
   }
 
   /**
-   * Converts the document to PDF format.
+   * Gets the PDF format constant for Word documents.
    * 
-   * @return this converter instance for method chaining
+   * @return the PDF format constant (SaveFormat.PDF)
    */
-  public DocumentConverter toPdf() {
-    return to(SaveFormat.PDF);
-  }
-
-  /**
-   * Converts the document to the specified format.
-   * 
-   * @param format the target format
-   * @return this converter instance for method chaining
-   */
-  public DocumentConverter to(int format) {
-    if (document == null) {
-      throw new IllegalStateException("No source document set. Call from() method first.");
-    }
-    this.targetFormat = format;
-    return this;
-  }
-
-  /**
-   * Converts the document and returns the result as a byte array.
-   * 
-   * @return the converted document as byte array
-   * @throws DocumentConversionException if conversion fails
-   */
-  public byte[] asBytes() {
-    validateConversionReady();
-    try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
-      SaveOptions options = DocSaveOptions.createSaveOptions(targetFormat);
-      document.save(outputStream, options);
-      return outputStream.toByteArray();
-    } catch (Exception e) {
-      Ivy.log().error("Failed to convert document", e);
-      throw new DocumentConversionException("Failed to convert document", e);
-    }
-  }
-
-  /**
-   * Converts the document and saves it as a file.
-   * 
-   * @param outputPath the path where the converted file should be saved
-   * @return the File object representing the saved file
-   * @throws DocumentConversionException if conversion or file saving fails
-   */
-  public File asFile(String outputPath) {
-    validateConversionReady();
-    try {
-      File outputFile = new File(outputPath);
-      // Ensure parent directories exist
-      File parentDir = outputFile.getParentFile();
-      if (parentDir != null && !parentDir.exists()) {
-        parentDir.mkdirs();
-      }
-
-      SaveOptions options = DocSaveOptions.createSaveOptions(targetFormat);
-      document.save(outputPath, options);
-      return outputFile;
-    } catch (Exception e) {
-      Ivy.log().error("Failed to save converted document to: " + outputPath, e);
-      throw new DocumentConversionException("Failed to save converted document", e);
-    }
-  }
-
-  /**
-   * Converts the document and saves it as a file.
-   * 
-   * @param outputFile the File object where the converted document should be
-   *                   saved
-   * @return the File object representing the saved file
-   * @throws DocumentConversionException if conversion or file saving fails
-   */
-  public File asFile(File outputFile) {
-    return asFile(outputFile.getAbsolutePath());
-  }
-
-  /**
-   * Converts the document and returns it as an InputStream. Note: The caller is
-   * responsible for closing the returned InputStream.
-   * 
-   * @return an InputStream containing the converted document data
-   * @throws DocumentConversionException if conversion fails
-   */
-  public InputStream asInputStream() {
-    byte[] bytes = asBytes();
-    return new ByteArrayInputStream(bytes);
-  }
-
-  /**
-   * Validates that the converter is ready for conversion.
-   * 
-   * @throws IllegalStateException if document or target format is not set
-   */
-  private void validateConversionReady() {
-    if (document == null) {
-      throw new IllegalStateException("No source document set. Call from() method first.");
-    }
-    if (targetFormat == null) {
-      throw new IllegalStateException("No target format set. Call to() or toPdf() method first.");
-    }
+  @Override
+  protected int getPdfFormat() {
+    return SaveFormat.PDF;
   }
 }
