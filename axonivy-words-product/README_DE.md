@@ -1,30 +1,31 @@
-# #Axon Efeu Wörter
-*(Einst Docfactory Doc)*
+# Axon Ivy Words
+*(ehemals Docfactory Doc)*
 
-**#Axon Efeu Wörter** sind ein leichtgewichtiger Nutzen jener vereinfacht
-Dokument verarbeitend Tasks innerhalb den #Axon Efeu Bahnsteig. Es baut weiter
-das #eingraben Aspose.Wörter #Java Bibliothek und versieht bereit-zu-Nutzung
-bauend Blöcke für allgemein Dokument Operationen.
+**Axon Ivy Words** ist ein leichtgewichtiges Dienstprogramm, das
+Dokumentverarbeitungsaufgaben innerhalb der Axon Ivy-Plattform vereinfacht. Es
+baut auf der eingebetteten Aspose.Words Java-Bibliothek auf und bietet
+gebrauchsfertige Bausteine für gängige Dokumentoperationen.
 
-### Wesentliche Charakterzüge
-- **Effortless Schein Einrichtung** – Lädt/Ladet und konfigurieren die Aspose
-  Schein via den `WordFactory` mit minimal #über Kopf.
-- **#Wiederverwendbar Komponenten** – #Vordefiniert runnable und consumable
-  Methoden beschleunigen Entwicklung und sichern Beschaffenheit.
-- **Leichtgewichtig und extendable** – Kleiner #Fußstapfen, leicht zu
-  installieren, integrier, und adaptieren zu eure ProjektsNotwendigkeiten.
+### Wichtigste Funktionen
+- **Mühelose Lizenzkonfiguration** – Laden und konfigurieren Sie die
+  Aspose-Lizenz über `WordFactory` mit minimalem Aufwand.
+- **Wiederverwendbare Komponenten** – Vordefinierte ausführbare und nutzbare
+  Methoden beschleunigen die Entwicklung und gewährleisten Konsistenz.
+- **Leichtgewichtig und erweiterbar** – Geringer Speicherbedarf, einfach zu
+  installieren, zu integrieren und an die Anforderungen Ihres Projekts
+  anzupassen.
 
 ## Einrichtung
-Herstellung sicher die Aspose Schein ist geladen durch der `WordFactory` Klasse
-vor verarbeiten irgendwelches Dokument.
+Stellen Sie sicher, dass die Aspose-Lizenz über die Klasse „ `WordFactory` ”
+geladen ist, bevor Sie ein Dokument verarbeiten.
 
-![#Laden #lizenzieren](images/load-license.png)
+![Lizenz laden](images/load-license.png)
 
-## Best Fahrpraxis: Post Verleibt ein mit Images
+## Bewährte Vorgehensweise: Seriendruck mit Bildern
 
-Für #einfügen Images hinein Post verleibt ein Vorlagen, wir #weiterempfehlen
-benutzen die [Aspose
-DocumentBuilder](https://docs.aspose.com/words/java/insert-picture-in-document/),
-Dieses Konzept #wiedergewinnen #programmatisch und #eingraben Images, #anbieten
-einen More Stall und maintainable Lösung als vertrauend weiter die
-`INCLUDEPICTURE` Feld.
+Zum Einfügen von Bildern in Seriendruckvorlagen empfehlen wir die Verwendung von
+[Aspose
+DocumentBuilder](https://docs.aspose.com/words/java/insert-picture-in-document/).
+Dieser Ansatz ruft Bilder programmgesteuert ab und bettet sie ein. Er bietet
+eine stabilere und wartungsfreundlichere Lösung als die Verwendung des Feldes „
+`INCLUDEPICTURE` ”.
