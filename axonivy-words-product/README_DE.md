@@ -15,7 +15,7 @@ gebrauchsfertige Bausteine für gängige Dokumentoperationen.
   installieren, zu integrieren und an die Anforderungen Ihres Projekts
   anzupassen.
 
-## Einrichtung
+## Setup
 Stellen Sie sicher, dass die Aspose-Lizenz über die Klasse „ `WordFactory` ”
 geladen ist, bevor Sie ein Dokument verarbeiten.
 
