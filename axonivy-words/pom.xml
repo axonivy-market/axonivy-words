@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.axonivy.utils.axonivywords</groupId>
   <artifactId>axonivy-words</artifactId>
-  <version>13.1.2-SNAPSHOT</version>
+  <version>13.2.0-SNAPSHOT</version>
   <packaging>iar</packaging>
   <properties>
     <aspose.version>24.4</aspose.version>
@@ -35,7 +35,7 @@
     <dependency>
       <groupId>com.axonivy.utils.docscommon</groupId>
       <artifactId>axonivy-docs-common</artifactId>
-      <version>[1.0.0,)</version>
+      <version>1.0.0</version>
     </dependency>
   </dependencies>
   <repositories>

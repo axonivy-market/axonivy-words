@@ -3,7 +3,7 @@
   <groupId>com.axonivy.utils.axonivywords</groupId>
   <artifactId>axonivy-words-modules</artifactId>
   <name>axonivy-words</name>
-  <version>13.1.2-SNAPSHOT</version>
+  <version>13.2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <modules>
