@@ -1,9 +1,9 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
   "id" : "198AC68EA7492BF2",
   "kind" : "HTML_DIALOG",
   "config" : {
-    "data": "com.axonivy.utils.axonivywords.demo.ConvertDocument.ConvertDocumentData"
+    "data" : "com.axonivy.utils.axonivywords.demo.ConvertDocument.ConvertDocumentData"
   },
   "elements" : [ {
       "id" : "f0",
