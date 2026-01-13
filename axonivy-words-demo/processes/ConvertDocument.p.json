@@ -1,8 +1,8 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/process/13.1.2/process.json",
+  "$schema" : "https://json-schema.axonivy.com/process/13.2.0/process.json",
   "id" : "198AC677B718C694",
   "config" : {
-    "data": "com.axonivy.utils.axonivywords.demo.ConvertDocumentData"
+    "data" : "com.axonivy.utils.axonivywords.demo.ConvertDocumentData"
   },
   "elements" : [ {
       "id" : "f0",
@@ -34,7 +34,7 @@
       "type" : "DialogCall",
       "name" : "Convert Document",
       "config" : {
-        "dialog": "com.axonivy.utils.axonivywords.demo.ConvertDocument:start()"
+        "dialog" : "com.axonivy.utils.axonivywords.demo.ConvertDocument:start()"
       },
       "visual" : {
         "at" : { "x" : 224, "y" : 64 }
