@@ -13,15 +13,15 @@
 			<br />
 
 			<h:form id="form" enctype="multipart/form-data">
-				<p:fileUpload value="#{convertDocumentBean.uploadedFile}"
+				<p:fileUpload value="#{data.uploadedFile}"
 					skinSimple="true" mode="simple" allowTypes="/(\.|\/)(doc|docx)$/"
 					label="Choose .doc/.docx" />
 				<br />
 				<br />
 				<p:commandButton value="Convert and Download"
-					actionListener="#{convertDocumentBean.convert}" ajax="false"
+					actionListener="#{logic.convert}" ajax="false"
 					icon="pi pi-download">
-					<p:fileDownload value="#{convertDocumentBean.convertedFile}" />
+					<p:fileDownload value="#{data.convertedFile}" />
 				</p:commandButton>
 			</h:form>
 		</ui:define>
