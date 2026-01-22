@@ -1,15 +1,13 @@
 package com.axonivy.utils.axonivywords.demo;
 
 import java.io.ByteArrayInputStream;
-import java.io.Serializable;
 
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.file.UploadedFile;
 
 import com.axonivy.utils.axonivywords.service.WordFactory;
 
-public class ConvertDocumentService implements Serializable {
-  private static final long serialVersionUID = 1L;
+public class ConvertDocumentService {
   private static final String PDF_EXTENSION = ".pdf";
   private static final String DOT = ".";
 
