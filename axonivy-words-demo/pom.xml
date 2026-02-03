@@ -27,11 +27,6 @@
     </dependency>
   </dependencies>
   <build>
-    <resources>
-      <resource>
-        <directory>resources</directory>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
