@@ -20,15 +20,6 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
-  <repositories>
-    <repository>
-      <id>sonatype</id>
-      <url>https://central.sonatype.com/repository/maven-snapshots</url>
-      <snapshots>
-        <updatePolicy>always</updatePolicy>
-      </snapshots>
-    </repository>
-  </repositories>
   <dependencies>
     <dependency>
       <groupId>com.axonivy.utils.axonivywords</groupId>
@@ -54,13 +45,23 @@
       <version>${tester.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>com.axonivy.ivy.webtest</groupId>
-      <artifactId>web-tester</artifactId>
-      <version>${tester.version}</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
+  <repositories>
+    <repository>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+      <id>maven.axonivy.com</id>
+      <url>https://maven.axonivy.com</url>
+    </repository>
+  </repositories>
   <build>
     <testSourceDirectory>src_test</testSourceDirectory>
     <plugins>
