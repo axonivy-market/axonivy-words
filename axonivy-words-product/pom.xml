@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.axonivy.utils.axon.ivy.words</groupId>
+  <groupId>com.axonivy.utils.axonivywords</groupId>
   <artifactId>axonivy-words-product</artifactId>
   <version>12.0.11-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -47,7 +47,7 @@
                 </copy>
                 <loadfile property="variables.yaml" srcFile="${variables.yaml.file}" encoding="UTF-8" failonerror="false" />
                 <replace file="${project.build.directory}/README.md" token="@variables.yaml@" value="${variables.yaml}" />
-                <replace file="${project.build.directory}/README_DE.md" token="@variables.yaml@" value="${variables.yaml}"/>
+                <replace file="${project.build.directory}/README_DE.md" token="@variables.yaml@" value="${variables.yaml}" />
               </target>
             </configuration>
             <goals>
