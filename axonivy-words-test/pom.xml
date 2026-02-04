@@ -10,16 +10,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <tester.version>12.0.2</tester.version>
   </properties>
-  <pluginRepositories>
-    <!-- Snapshot releases are available via sonatype.org -->
-    <pluginRepository>
-      <id>sonatype</id>
-      <url>https://central.sonatype.com/repository/maven-snapshots</url>
-      <snapshots>
-        <updatePolicy>always</updatePolicy>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
   <dependencies>
     <dependency>
       <groupId>com.axonivy.utils.axonivywords</groupId>
@@ -36,7 +26,7 @@
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-inline</artifactId>
-      <version>5.2.0</version>
+      <version>5.12.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
