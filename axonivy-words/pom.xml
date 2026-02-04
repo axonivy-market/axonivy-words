@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.axonivy.ivy.api</groupId>
-    <artifactId>ivy-project-parent</artifactId>
-    <version>13.2.0</version>
-    <relativePath />
-  </parent>
   <groupId>com.axonivy.utils.axonivywords</groupId>
   <artifactId>axonivy-words</artifactId>
-  <version>13.2.1-SNAPSHOT</version>
+  <version>12.0.11-SNAPSHOT</version>
   <packaging>iar</packaging>
   <properties>
+    <project.build.plugin.version>12.0.8</project.build.plugin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <aspose.version>24.4</aspose.version>
   </properties>
+  <pluginRepositories>
+    <!-- Snapshot releases are available via sonatype.org -->
+    <pluginRepository>
+      <id>sonatype</id>
+      <url>https://central.sonatype.com/repository/maven-snapshots</url>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
   <dependencies>
-    <dependency>
-      <groupId>com.axonivy.ivy.api</groupId>
-      <artifactId>ivy-api</artifactId>
-    </dependency>
     <dependency>
       <groupId>com.aspose</groupId>
       <artifactId>aspose-words</artifactId>
@@ -62,6 +64,7 @@
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
+        <version>${project.build.plugin.version}</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>

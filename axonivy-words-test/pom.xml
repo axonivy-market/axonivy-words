@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.axonivy.ivy.api</groupId>
-    <artifactId>ivy-project-parent</artifactId>
-    <version>13.2.0</version>
-    <relativePath />
-  </parent>
   <groupId>com.axonivy.utils.axonivywords</groupId>
   <artifactId>axonivy-words-test</artifactId>
-  <version>13.2.1-SNAPSHOT</version>
-  <packaging>iar</packaging>
+  <version>12.0.11-SNAPSHOT</version>
+  <packaging>iar-integration-test</packaging>
+  <properties>
+    <project.build.plugin.version>12.0.8</project.build.plugin.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <tester.version>12.0.2</tester.version>
+  </properties>
   <dependencies>
-    <dependency>
-      <groupId>com.axonivy.ivy.api</groupId>
-      <artifactId>ivy-api</artifactId>
-    </dependency>
     <dependency>
       <groupId>com.axonivy.utils.axonivywords</groupId>
       <artifactId>axonivy-words</artifactId>
@@ -23,14 +18,21 @@
       <type>iar</type>
     </dependency>
     <dependency>
-      <groupId>com.axonivy.ivy.api.test</groupId>
-      <artifactId>ivy-test-api</artifactId>
-      <scope>test</scope>
+      <groupId>com.axonivy.utils.axonivywords</groupId>
+      <artifactId>axonivy-words-demo</artifactId>
+      <version>${project.version}</version>
+      <type>iar</type>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-inline</artifactId>
       <version>5.2.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.axonivy.ivy.test</groupId>
+      <artifactId>unit-tester</artifactId>
+      <version>${tester.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -56,6 +58,18 @@
       <plugin>
         <groupId>com.axonivy.ivy.ci</groupId>
         <artifactId>project-build-plugin</artifactId>
+        <version>${project.build.plugin.version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <systemPropertyVariables>
+            <net.bytebuddy.experimental>true</net.bytebuddy.experimental>
+          </systemPropertyVariables>
+        </configuration>
       </plugin>
     </plugins>
   </build>
