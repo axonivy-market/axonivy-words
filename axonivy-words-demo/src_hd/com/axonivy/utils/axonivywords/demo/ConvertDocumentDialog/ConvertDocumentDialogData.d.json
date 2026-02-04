@@ -1,0 +1,12 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/data-class/13.2.0/data-class.json",
+  "simpleName" : "ConvertDocumentDialogData",
+  "namespace" : "com.axonivy.utils.axonivywords.demo.ConvertDocumentDialog",
+  "fields" : [ {
+    "name" : "uploadedFile",
+    "type" : "org.primefaces.model.file.UploadedFile"
+  }, {
+    "name" : "convertedFile",
+    "type" : "org.primefaces.model.DefaultStreamedContent"
+  } ]
+}
