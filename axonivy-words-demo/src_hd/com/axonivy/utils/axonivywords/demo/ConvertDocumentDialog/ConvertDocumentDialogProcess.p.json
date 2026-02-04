@@ -3,7 +3,7 @@
   "id" : "198AC68EA7492BF2",
   "kind" : "HTML_DIALOG",
   "config" : {
-    "data" : "com.axonivy.utils.axonivywords.demo.ConvertDocument.ConvertDocumentData"
+    "data" : "com.axonivy.utils.axonivywords.demo.ConvertDocumentDialog.ConvertDocumentDialogData"
   },
   "elements" : [ {
       "id" : "f0",
@@ -43,6 +43,44 @@
       "type" : "HtmlDialogExit",
       "visual" : {
         "at" : { "x" : 224, "y" : 160 }
+      }
+    }, {
+      "id" : "f6",
+      "type" : "HtmlDialogMethodStart",
+      "name" : "convert()",
+      "config" : {
+        "signature" : "convert",
+        "guid" : "19BE3F12B58F278F"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 264 }
+      },
+      "connect" : [
+        { "id" : "f9", "to" : "f7" }
+      ]
+    }, {
+      "id" : "f7",
+      "type" : "Script",
+      "name" : "Convert To PDF",
+      "config" : {
+        "output" : {
+          "map" : {
+            "out" : "in",
+            "out.convertedFile" : "com.axonivy.utils.axonivywords.demo.ConvertDocumentService.convert(in.uploadedFile)"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 264 }
+      },
+      "connect" : [
+        { "id" : "f10", "to" : "f8" }
+      ]
+    }, {
+      "id" : "f8",
+      "type" : "HtmlDialogEnd",
+      "visual" : {
+        "at" : { "x" : 368, "y" : 264 }
       }
     } ]
 }

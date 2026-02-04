@@ -34,7 +34,7 @@
       "type" : "DialogCall",
       "name" : "Convert Document",
       "config" : {
-        "dialog" : "com.axonivy.utils.axonivywords.demo.ConvertDocument:start()"
+        "dialog" : "com.axonivy.utils.axonivywords.demo.ConvertDocumentDialog:start()"
       },
       "visual" : {
         "at" : { "x" : 224, "y" : 64 }
