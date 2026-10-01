@@ -1,5 +1,5 @@
 {
-  "$schema" : "https://json-schema.axonivy.com/14.0-dev/project/process.json",
+  "$schema" : "https://json-schema.axonivy.com/14.0/project/process.json",
   "id" : "198AC677B718C694",
   "config" : {
     "data" : "com.axonivy.utils.axonivywords.demo.ConvertDocumentData"
